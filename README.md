@@ -2,6 +2,16 @@
 
 # push_swap
 
+## Table of Contents
+1. [Description](#description)
+2. [Instructions](#instructions)
+3. [Program Overview](#program-overview)
+4. [Features](#features)
+5. [Usage Examples](#usage-examples)
+6. [Technical Choices](#technical-choices)
+7. [Resources](#resources)
+8. [Contributions](#contributions)
+
 ## Description
 
 The objective of this project is to Write a C program which calculates and displays on the standard output the smallest program, made of Push swap language operations, that sorts the integers received as arguments.
@@ -10,6 +20,8 @@ The primary goals of this project were to:
 1. Learn about Big-O notation to help talk about how algorithms scale.
 2. Gain a deeper understanding of algorithmic complexities in a very concrete way.
 3. Discover how the choice of algorithm can make the difference between a quick win and an endless scroll of operations.
+
+[Back to top](#table-of-contents)
 
 ## Instructions
 
@@ -30,6 +42,8 @@ This will generate the program:
 - make clean — Remove object files
 - make fclean — Remove object files and library
 - make re — Rebuild the library from scratch
+
+[Back to top](#table-of-contents)
 
 ## Program Overview
 
@@ -63,6 +77,8 @@ The following operations were made available:
 
 ### ?
 
+[Back to top](#table-of-contents)
+
 ## Features
 
 ### Sort Algorithms
@@ -93,14 +109,16 @@ The optional benchmark mode (--bench) displays, after sorting:
 
 The benchmark output is sent to stderr and only appears when the flag is present.
 
-#### Example screenshots
+#### Example Screenshots
 
 
 ![Run with benchmark enabled; hide operations and show only metrics](https://imgur.com/PlJJeqz)
 
 ![Pipe operations to the checker while saving benchmark to a file](https://imgur.com/pdj3RJh)
 
-## Usage examples
+[Back to top](#table-of-contents)
+
+## Usage Examples
 
 Below are some examples of command prompt inputs that can be used to alter the behaviour of the program:
 
@@ -133,6 +151,8 @@ Error
 $> ./push_swap --simple 3 2 3
 Error
 ~~~
+
+[Back to top](#table-of-contents)
 
 ## Technical Choices
 
@@ -168,6 +188,8 @@ thresholds, the internal techniques used in each regime, and a brief complexity
 argument (upper bounds) for time and space within the Push_swap model.
 ~~~
 
+[Back to top](#table-of-contents)
+
 ## Resources
 
 ### Documentation & References
@@ -187,6 +209,8 @@ AI tools were used selectively during the development of this project for:
 
 AI was not used to generate final implementations directly. All logic and code structure for this project are of our own making.
 
+[Back to top](#table-of-contents)
+
 ## Contributions
 
 The following sections were contributed by *thours*.
@@ -198,3 +222,5 @@ The following sections were contributed by *speterse*.
 
 -  README.md
 - a
+
+[Back to top](#table-of-contents)
