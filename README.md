@@ -59,23 +59,23 @@ This will generate the program:
 
 The following operations were made available:
 
-|
-|-|-|
-|sa (swap a) | Swap the first two elements at the top of stack a. Do nothing if there is only one or no elements.|
-|sb (swap b) | Swap the first two elements at the top of stack b. Do nothing if there is only one or no elements.|
-|ss | sa and sb at the same time.|
-|pa (push a) | Take the first element at the top of b and put it at the top of a. Do nothing if b is empty.|
-|pb (push b) | Take the first element at the top of a and put it at the top of b. Do nothing if a is empty.|
-|ra (rotate a) | Shift up all elements of stack a by one. The first element becomes the last one.|
-|rb (rotate b) | Shift up all elements of stack b by one. The first element becomes the last one.|
-|rr | ra and rb at the same time.|
-|rra (reverse rotate a) | Shift down all elements of stack a by one. The last element becomes the first one.|
-|rrb (reverse rotate b) | Shift down all elements of stack b by one. The last element becomes the first one.|
-|rrr | rra and rrb at the same time.|
+| Instruction | Description |
+| :--- | :--- |
+| **sa** (swap a) | Swap the first two elements at the top of stack a. Do nothing if there is only one or no elements. |
+| **sb** (swap b) | Swap the first two elements at the top of stack b. Do nothing if there is only one or no elements. |
+| **ss** | sa and sb at the same time. |
+| **pa** (push a) | Take the first element at the top of b and put it at the top of a. Do nothing if b is empty. |
+| **pb** (push b) | Take the first element at the top of a and put it at the top of b. Do nothing if a is empty. |
+| **ra** (rotate a) | Shift up all elements of stack a by one. The first element becomes the last one. |
+| **rb** (rotate b) | Shift up all elements of stack b by one. The first element becomes the last one. |
+| **rr** | ra and rb at the same time. |
+| **rra** (reverse rotate a) | Shift down all elements of stack a by one. The last element becomes the first one. |
+| **rrb** (reverse rotate b) | Shift down all elements of stack b by one. The last element becomes the first one. |
+| **rrr** | rra and rrb at the same time. |
 
 
 
-### ?
+### Other?
 
 [Back to top](#table-of-contents)
 
@@ -111,10 +111,11 @@ The benchmark output is sent to stderr and only appears when the flag is present
 
 #### Example Screenshots
 
+Run with benchmark enabled; hide operations and show only metrics:
+![Run with benchmark enabled; hide operations and show only metrics](https://i.imgur.com/PlJJeqz.png)
 
-![Run with benchmark enabled; hide operations and show only metrics](https://imgur.com/PlJJeqz)
-
-![Pipe operations to the checker while saving benchmark to a file](https://imgur.com/pdj3RJh)
+Pipe operations to the checker while saving benchmark to a file:
+![Pipe operations to the checker while saving benchmark to a file](https://i.imgur.com/pdj3RJh.png)
 
 [Back to top](#table-of-contents)
 

@@ -2,13 +2,15 @@
 
 NB: As we progress through the project we can start deleting sections of this to make it easier to keep track of what still needs to be done
 
-|
-|-----|------|
-| Program Name | push_swap |
-| Files to Submit | Makefile, *.h, *.c |
-| Makefile | NAME, all, clean, fclean, re |
-| Arguments | stack a: A list of integers |
-|External Function | <ul><li>read, write, malloc, free, exit</li><li>ft_printf or any equivalent YOU coded</li></ul> |
+
+| Field | Requirement |
+| :--- | :--- |
+| **Program Name** | push_swap |
+| **Files to Submit** | Makefile, *.h, *.c |
+| **Makefile** | NAME, all, clean, fclean, re |
+| **Arguments** | stack a: A list of integers |
+| **External Functions** | read, write, malloc, free, exit, ft_printf |
+
 
 ## Main Task
 
@@ -73,19 +75,19 @@ argument (upper bounds) for time and space within the Push_swap model
 	- The stack b is empty.
 - The goal is to sort in ascending order numbers into stack a. To do so you have the following operations at your disposal:
 
-|
-|-|-|
-|sa (swap a) | Swap the first two elements at the top of stack a. Do nothing if there is only one or no elements.|
-|sb (swap b) | Swap the first two elements at the top of stack b. Do nothing if there is only one or no elements.|
-|ss | sa and sb at the same time.|
-|pa (push a) | Take the first element at the top of b and put it at the top of a. Do nothing if b is empty.|
-|pb (push b) | Take the first element at the top of a and put it at the top of b. Do nothing if a is empty.|
-|ra (rotate a) | Shift up all elements of stack a by one. The first element becomes the last one.|
-|rb (rotate b) | Shift up all elements of stack b by one. The first element becomes the last one.|
-|rr | ra and rb at the same time.|
-|rra (reverse rotate a) | Shift down all elements of stack a by one. The last element becomes the first one.|
-|rrb (reverse rotate b) | Shift down all elements of stack b by one. The last element becomes the first one.|
-|rrr | rra and rrb at the same time.|
+| Instruction | Description |
+| :--- | :--- |
+| **sa** (swap a) | Swap the first two elements at the top of stack a. Do nothing if there is only one or no elements. |
+| **sb** (swap b) | Swap the first two elements at the top of stack b. Do nothing if there is only one or no elements. |
+| **ss** | sa and sb at the same time. |
+| **pa** (push a) | Take the first element at the top of b and put it at the top of a. Do nothing if b is empty. |
+| **pb** (push b) | Take the first element at the top of a and put it at the top of b. Do nothing if a is empty. |
+| **ra** (rotate a) | Shift up all elements of stack a by one. The first element becomes the last one. |
+| **rb** (rotate b) | Shift up all elements of stack b by one. The first element becomes the last one. |
+| **rr** | ra and rb at the same time. |
+| **rra** (reverse rotate a) | Shift down all elements of stack a by one. The last element becomes the first one. |
+| **rrb** (reverse rotate b) | Shift down all elements of stack b by one. The last element becomes the first one. |
+| **rrr** | rra and rrb at the same time. |
 
 ## Additional Requirements
 
@@ -208,3 +210,11 @@ Error
 $> ./push_swap --simple 3 2 3
 Error
 ~~~
+
+### Example Screenshots
+
+Run with benchmark enabled; hide operations and show only metrics:
+![Run with benchmark enabled; hide operations and show only metrics](https://i.imgur.com/PlJJeqz.png)
+
+Pipe operations to the checker while saving benchmark to a file:
+![Pipe operations to the checker while saving benchmark to a file](https://i.imgur.com/pdj3RJh.png)
