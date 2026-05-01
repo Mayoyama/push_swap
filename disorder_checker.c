@@ -1,0 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   disorder_checker.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: speterse <speterse@student.42belgium.      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/29 23:28:26 by speterse          #+#    #+#             */
+/*   Updated: 2026/04/30 00:56:26 by speterse         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+double	compute_disorder(t_list *lst)
+{
+	int		mistakes;
+	int		pairs;
+	t_list	*i;
+	t_list	*j;
+
+	mistakes = 0;
+	pairs = 0;
+	if (!lst)
+		return (0.0);
+	i = lst;
+	while (i)
+	{
+		j = i->next;
+		while (j)
+		{
+			pairs++;
+			
+			if (i->value > j->value)
+				mistakes++;
+			j = j->next;
+		}
+		i = i->next;
+	}
+	if (pairs == 0)
+		return (0.0);
+	return ((double) mistakes/pairs);
+}
