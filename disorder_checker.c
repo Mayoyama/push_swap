@@ -12,12 +12,12 @@
 
 #include "push_swap.h"
 
-double	compute_disorder(t_list *lst)
+double	compute_disorder(t_node *lst)
 {
 	int		mistakes;
 	int		pairs;
-	t_list	*i;
-	t_list	*j;
+	t_node	*i;
+	t_node	*j;
 
 	mistakes = 0;
 	pairs = 0;
