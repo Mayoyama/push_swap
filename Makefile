@@ -1,6 +1,8 @@
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
-SRCS = main.c
+SRCS = 	main.c \
+		input_parser/check_input.c \
+		input_parser/parser_utils.c
 LIBFT = libft/libft.a
 OBJS = $(SRCS:.c=.o)
 NAME = push_swap

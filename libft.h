@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 10:54:07 by thours            #+#    #+#             */
-/*   Updated: 2026/05/01 18:55:52 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/01 20:45:35 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int			ft_isdigit(int c);
 int			ft_isalnum(int c);
 int			ft_isascii(int c);
 int			ft_isprint(int c);
-int			ft_isspace(char c);
 int			ft_strlen(const char *str);
 void		*ft_memset(void *s, int c, size_t n);
 void		ft_bzero(void *s, size_t n);
@@ -136,9 +135,7 @@ int			print_mem(void *ptr, t_flags *flags);
 
 /**** STD LIB FUNCTIONS ****/
 int			ft_isspace(char c);
-int			ft_isdigit(int c);
 int			ft_strlen_int(char *str);
-int			ft_atoi(const char *nptr);
 
 /**** PRINT FUNCTIONS ****/
 void		ft_putnbr(int n);

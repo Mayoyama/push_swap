@@ -6,12 +6,14 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 15:58:26 by thours            #+#    #+#             */
-/*   Updated: 2026/05/01 19:12:07 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/01 20:39:41 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+
+#include <limits.h>
 
 typedef struct s_node
 {
@@ -44,6 +46,10 @@ typedef struct s_input
 }	t_input;
 
 /**** USER INPUT PARSING ****/
-
+int		check_input(int argc, char **argv);
+int		is_valid_list(char *argv);
+long	ft_atoi_long(char *nptr, int *error);
+int		is_valid_int(char *str);
+int		is_parameter(char *argv);
 
 #endif

@@ -6,15 +6,18 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 17:19:58 by thours            #+#    #+#             */
-/*   Updated: 2026/04/30 17:35:04 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/01 21:32:49 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	ft_printf("%u\n", -12);
+	if (check_input(argc, argv))
+		ft_printf("User input is correct\n");
+	else
+		ft_printf("Input error\n");
 	return (0);
 }
