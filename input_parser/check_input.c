@@ -6,11 +6,10 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 18:46:11 by thours            #+#    #+#             */
-/*   Updated: 2026/05/01 21:31:52 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/02 09:48:42 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
 #include "../push_swap.h"
 
 int	check_input(int argc, char **argv)

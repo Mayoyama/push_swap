@@ -6,11 +6,10 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 19:02:21 by thours            #+#    #+#             */
-/*   Updated: 2026/05/01 19:12:21 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/02 09:48:37 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
 #include "../push_swap.h"
 
 int	is_parameter(char *argv)
