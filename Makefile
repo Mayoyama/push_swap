@@ -6,7 +6,11 @@ SRCS = 	main.c \
 		input_parser/input_struct_functions.c \
 		input_parser/num_struct_functions.c \
 		input_parser/extract_input.c \
-		input_parser/get_index_and_target.c
+		input_parser/get_index_and_target.c \
+		algo_helpers/stack_struct_functions.c \
+		algo_helpers/get_above_med.c \
+		algo_helpers/utils.c \
+		simple_algo/do_simple_algo.c
 LIBFT = libft/libft.a
 OBJS = $(SRCS:.c=.o)
 NAME = push_swap

@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 15:58:26 by thours            #+#    #+#             */
-/*   Updated: 2026/05/02 19:09:27 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/02 22:50:28 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,24 @@ int		check_for_duplicate(t_node *head);
 void	get_index_and_target(t_node *list);
 void	get_index(t_node *list);
 void	get_target(t_node *list);
+
+/* ************************************************************************** */
+/* *********************		ALGORITHM HELPERS		********************* */
+/* ************************************************************************** */
+
+/**** CREATE STACK STRUCTURE ****/
+t_stack	*create_stack_struct(t_input *input);
+
+/**** UTILS *****/
+void	get_above_med(t_stack *a, t_stack *b);
+int		algorithm_has_end(t_stack *a, t_stack *b);
+t_node	*find_smallest_value(t_node *list);
+
+/* ************************************************************************** */
+/* *********************		SIMPLE ALGORITHM		********************* */
+/* ************************************************************************** */
+
+void	do_simple_algo(t_input *input);
+void	run_simple_algo(t_stack *a, t_stack *b);
 
 #endif
