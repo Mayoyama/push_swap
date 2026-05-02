@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 18:46:11 by thours            #+#    #+#             */
-/*   Updated: 2026/05/02 09:48:42 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/02 14:56:21 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	check_input(int argc, char **argv)
 		i = 1;
 		while (argv[i])
 		{
+			if (ft_strlen_int(argv[i]) == 0)
+				return (0);
 			if (!is_parameter(argv[i]) && !is_valid_list(argv[i]))
 				return (0);
 			i++;
@@ -35,31 +37,30 @@ int	check_input(int argc, char **argv)
  *	directly after)
  *	On the second loop : Check if each number can fit in an int
 */
-int	is_valid_list(char *argv)
+int	is_valid_list(char *str)
 {
 	int	i;
 
 	i = 0;
-	while (argv[i])
+	while (str[i])
 	{
-		if ((argv[i] == '-' || argv[i] == '+') && ft_isdigit(argv[i + 1]))
+		if ((str[i] == '-' || str[i] == '+') && ft_isdigit(str[i + 1]))
 			i++;
-		if (!ft_isdigit(argv[i]) && !ft_isspace(argv[i]))
+		if (!ft_isdigit(str[i]) && !ft_isspace(str[i]))
 			return (0);
 		i++;
 	}
 	i = 0;
-	while (argv[i])
+	while (str[i])
 	{
-		while (ft_isspace(argv[i]))
+		if (!is_valid_int(&str[i]))
+			return (0);
+		while (ft_isspace(str[i]))
 			i++;
-		if (argv[i] == '-' || argv[i] == '+' || ft_isdigit(argv[i]))
-		{
-			if (!is_valid_int(&argv[i]))
-				return (0);
-			while (argv[i] == '-' || argv[i] == '+' || ft_isdigit(argv[i]))
-				i++;
-		}
+		while (ft_isdigit(str[i]) || str[i] == '-' || str[i] == '+')
+			i++;
+		while (ft_isspace(str[i]))
+			i++;
 	}
 	return (1);
 }
@@ -104,6 +105,7 @@ long	ft_atoi_long(char *nptr, int *error)
 {
 	long	res;
 	int		sign;
+
 	int		i;
 
 	i = 0;
@@ -118,11 +120,28 @@ long	ft_atoi_long(char *nptr, int *error)
 	return (res);
 }
 
+/*
+ *	Check if this is a valid int :
+ *	First check the format (check for potential spaces and a sign before
+ *	the number)
+*/
 int	is_valid_int(char *str)
 {
 	int	error;
-
+	int	i;
+	
 	error = 0;
+	i = 0;
+	while (ft_isspace(str[i]))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	if (!ft_isdigit(str[i]))
+		return (0);
+	while (ft_isdigit(str[i]))
+		i++;
+	if (!(ft_isspace(str[i]) || str[i] == '\0'))
+		return (0);
 	ft_atoi_long(str, &error);
 	if (error == 1)
 		return (0);
