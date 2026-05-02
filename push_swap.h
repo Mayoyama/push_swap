@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 15:58:26 by thours            #+#    #+#             */
-/*   Updated: 2026/05/02 15:42:59 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/02 19:09:27 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,13 @@ typedef struct s_input
 	int		bench_mod;
 	double	disorder;
 }	t_input;
+
+typedef struct s_stack
+{
+	t_node	*list;
+	t_node	*tail;
+	int		size;
+}	t_stack;
 
 /* ************************************************************************** */
 /* *********************		INPUT PARSING		************************* */
