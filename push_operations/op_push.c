@@ -1,41 +1,37 @@
 #include "../push_swap.h"
 
-void pa(t_input *a, t_input *b)
+void	push_to_dest(t_stack *dest, t_stack *src)
 {
-	t_node	*new_top_a;
+	t_node	*new_dest_top;
 
-	if (!b || !b->list)
+	if (!src || !src->list)
 		return ;
-	new_top_a = b->list;
-	b->list = new_top_a->next;
-	if (b->list)
-		b->list->prev = NULL;
-	b->size--;
-	new_top_a->next = a->list;
-	if (a->list)
-		a->list->prev = new_top_a;
-	a->list = new_top_a;
-	a->list->prev = NULL;
-	a->size++;
+	new_dest_top = src->list;
+	src->list = new_dest_top->next;
+	if (src->list)
+		src->list->prev = NULL;
+	else
+		src->tail = NULL;
+	src->size--;
+	new_dest_top->prev = NULL;
+	new_dest_top->next = dest->list;
+	if (dest->list)
+		dest->list->prev = new_dest_top;
+	else
+		dest->tail = new_dest_top;
+	dest->list = new_dest_top;
+	dest->size++;
+	
+}
+
+void pa(t_stack *a, t_stack *b)
+{
+	push_to_dest(a, b);
 	write(1, "pa\n", 3);
 }
 
-void pb(t_input *a, t_input *b)
+void pb(t_stack *a, t_stack *b)
 {
-	t_node *new_top_b;
-
-	if (!a || !a->list)
-		return;
-	new_top_b = a->list;
-	a->list = new_top_b->next;
-	if (a->list)
-		a->list->prev = NULL;
-	a->size--;
-	new_top_b->next = b->list;
-	if (b->list)
-		b->list->prev = new_top_b;
-	b->list = new_top_b;
-	b->list->prev = NULL;
-	b->size++;
+	push_to_dest(b, a);
 	write(1, "pb\n", 3);
 }

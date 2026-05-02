@@ -6,17 +6,17 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 15:58:26 by thours            #+#    #+#             */
-/*   Updated: 2026/05/02 19:09:27 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/02 15:42:59 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include <limits.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include "libft.h"
+# include "libft.h"
+# include <limits.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 typedef struct s_node
 {
@@ -28,7 +28,7 @@ typedef struct s_node
 	int				above_med;
 	int				push_cost;
 	int				cheapest;
-}	t_node;
+}							t_node;
 
 typedef enum e_mod
 {
@@ -37,7 +37,7 @@ typedef enum e_mod
 	MEDIUM,
 	COMPLEX,
 	ADAPTATIVE,
-}	t_mod;
+}				t_mod;
 
 typedef struct s_input
 {
@@ -46,14 +46,14 @@ typedef struct s_input
 	t_mod	mod;
 	int		bench_mod;
 	double	disorder;
-}	t_input;
+}				t_input;
 
 typedef struct s_stack
 {
 	t_node	*list;
 	t_node	*tail;
 	int		size;
-}	t_stack;
+}				t_stack;
 
 /* ************************************************************************** */
 /* *********************		INPUT PARSING		************************* */
@@ -87,5 +87,33 @@ int		check_for_duplicate(t_node *head);
 void	get_index_and_target(t_node *list);
 void	get_index(t_node *list);
 void	get_target(t_node *list);
+
+/**** DISORDER CHECKER ****/
+double	compute_disorder(t_node *lst);
+
+/* ************************************************************************** */
+/* *********************	  PUSH OPERATIONS		************************* */
+/* ************************************************************************** */
+
+/**** PUSH ****/
+void	push_to_dest(t_stack *dest, t_stack *src);
+void	pa(t_stack *a, t_stack *b);
+void	pb(t_stack *a, t_stack *b);
+/**** SWAP ****/
+void	swap_top_two(t_stack *stack);
+void	sa(t_stack *a);
+void	sb(t_stack *b);
+void	ss(t_stack *a, t_stack *b);
+/**** ROTATE ****/
+void	rotate_list(t_stack *stack);
+void	ra(t_stack *a);
+void	rb(t_stack *b);
+void	rr(t_stack *a, t_stack *b);
+/**** REVERSE ****/
+void	rev_rotate_list(t_stack *stack);
+void	rra(t_stack *a);
+void	rrb(t_stack *b);
+void	rrr(t_stack *a, t_stack *b);
+
 
 #endif
