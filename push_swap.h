@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 15:58:26 by thours            #+#    #+#             */
-/*   Updated: 2026/05/02 22:50:28 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/03 11:39:57 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,30 @@ typedef enum e_mod
 	ADAPTATIVE,
 }	t_mod;
 
+typedef struct s_opcount
+{
+	int	pa;
+	int	pb;
+	int	sa;
+	int	sb;
+	int	ss;
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
+	int	total_ops;
+}	t_opcount;
+
 typedef struct s_input
 {
-	t_node	*list;
-	int		size;
-	t_mod	mod;
-	int		bench_mod;
-	double	disorder;
+	t_node		*list;
+	int			size;
+	t_mod		mod;
+	int			bench_mod;
+	t_opcount	*op_counts;
+	double		disorder;
 }	t_input;
 
 typedef struct s_stack
@@ -67,8 +84,9 @@ int		is_valid_int(char *str);
 int		is_parameter(char *argv);
 
 /**** INPUT STRUCT FUNCTIONS ****/
-t_input	*create_input_struct(void);
-void	free_input(t_input *input);
+t_input		*create_input_struct(void);
+t_opcount	*create_opcounts_struct(void);
+void		free_input(t_input *input);
 
 /**** NUM STRUCT FUNCTIONS ****/
 t_node	*create_num_node(int num);
@@ -105,6 +123,6 @@ t_node	*find_smallest_value(t_node *list);
 /* ************************************************************************** */
 
 void	do_simple_algo(t_input *input);
-void	run_simple_algo(t_stack *a, t_stack *b);
+void	run_simple_algo(t_input *input, t_stack *a, t_stack *b);
 
 #endif
