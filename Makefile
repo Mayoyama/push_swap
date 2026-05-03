@@ -7,15 +7,21 @@ SRCS = 	main.c \
 		input_parser/num_struct_functions.c \
 		input_parser/extract_input.c \
 		input_parser/get_index_and_target.c \
-		push_operatations/op_push.c \
-		push_operatations/op_reverse_rotate.c \
-		push_operatations/op_rotate.c \
-		push_operatations/op_swap.c \
+		push_operations/op_push.c \
+		push_operations/op_reverse_rotate.c \
+		push_operations/op_rotate.c \
+		push_operations/op_swap.c \
 		mode_adaptive/disorder_checker.c \
-		mode_adaptive/adaptive_mode.c \
 		helpers/ft_putdouble_fd.c \
 		benchmark/benchmark.c \
-		mode_complex/complex_mode.c
+		mode_complex/complex_mode.c \
+		algo_helpers/stack_struct_functions.c \
+		algo_helpers/get_above_med.c \
+		algo_helpers/utils.c \
+		simple_algo/do_simple_algo.c
+# missing files :
+# mode_adaptive/adaptive_mode.c
+
 LIBFT = libft/libft.a
 OBJS = $(SRCS:.c=.o)
 NAME = push_swap

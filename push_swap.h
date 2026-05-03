@@ -6,9 +6,10 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 15:58:26 by thours            #+#    #+#             */
-/*   Updated: 2026/05/02 15:42:59 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/03 14:32:11 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -62,9 +63,9 @@ typedef struct s_input
 	int			size;
 	t_mod		mod;
 	int			bench_mod;
-	t_opcount	op_counts;  //I think it would be useful to store the opcounts here
+	t_opcount	*op_counts;
 	double		disorder;
-}				t_input;
+}	t_input;
 
 typedef struct s_stack
 {
@@ -86,6 +87,7 @@ int			is_parameter(char *argv);
 
 /**** INPUT STRUCT FUNCTIONS ****/
 t_input		*create_input_struct(void);
+t_opcount	*create_opcounts_struct(void);
 void		free_input(t_input *input);
 
 /**** NUM STRUCT FUNCTIONS ****/
@@ -116,9 +118,6 @@ double		compute_disorder(t_node *lst);
 void		adaptive_modeset(t_input *input, t_stack *a, t_stack *b);
 
 void		benchmark_mode(t_input *input);
-static void	bench_print_strategy(t_input *input);
-static void	bench_lineone_opcounts(input);
-static void	bench_linetwo_opcounts(input);
 
 /* ************************************************************************** */
 /* *********************	  PUSH OPERATIONS		************************* */
@@ -151,7 +150,23 @@ void		rrr(t_input *input, t_stack *a, t_stack *b);
 void		ft_putdouble_fd(double d, int fd, int decimalplaces);
 void		padded_putnbr_fd(int num, int fd);
 
+/* ************************************************************************** */
+/* *********************		ALGORITHM HELPERS		********************* */
+/* ************************************************************************** */
 
+/**** CREATE STACK STRUCTURE ****/
+t_stack	*create_stack_struct(t_input *input);
 
+/**** UTILS *****/
+void	get_above_med(t_stack *a, t_stack *b);
+int		algorithm_has_end(t_stack *a, t_stack *b);
+t_node	*find_smallest_value(t_node *list);
+
+/* ************************************************************************** */
+/* *********************		SIMPLE ALGORITHM		********************* */
+/* ************************************************************************** */
+
+void	do_simple_algo(t_input *input);
+void	run_simple_algo(t_input *input, t_stack *a, t_stack *b);
 
 #endif

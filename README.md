@@ -84,7 +84,22 @@ The following operations were made available:
 ### Sort Algorithms
 
 The following algorithms were implemented in this program:
-1. a
+
+#### Simple Algorithm — Selection Sort Adaptation O(n²)
+
+The simple algorithm is a selection sort adaptation. At each iteration, it finds the smallest remaining value in stack A and moves it to the top of stack B, repeating until only the maximum value remains in A. Once B contains all other values in descending order, every element is pushed back to A, reconstructing the stack in ascending order.
+
+#### How extraction works
+To move the smallest node to the top of A, the algorithm checks whether the node is above or below the median of the stack:
+- **Above the median** -> series of `ra` (rotate) operations to bring it up from the top
+- **Below the median** -> series of `rra` (reverse rotate) operations to bring it up from the bottom
+
+This avoids always rotating in the same direction, halving the worst-case rotation cost per extraction.
+
+#### Limitations
+
+This strategy is efficient for small inputs but degrades quickly as `n` grows — each extraction can require up to `n/2` rotations, and there are `n` extractions. For inputs above ~20 elements, the medium or complex strategy will always outperform it.
+
 1. a
 1. a
 1. a

@@ -32,7 +32,7 @@ void	rra(t_input *input, t_stack *a)
 
 void	rrb(t_input *input, t_stack *b)
 {
-	if (rev_rotate_list(b);)
+	if (rev_rotate_list(b))
 	{
 		input->op_counts->rrb++;
 		input->op_counts->total_ops++;
