@@ -22,8 +22,8 @@ void	ra(t_input *input, t_stack *a)
 {
 	if (rotate_list(a))
 	{
-		input->op_counts.ra++;
-		input->op_counts.total_ops++;
+		input->op_counts->ra++;
+		input->op_counts->total_ops++;
 		write(1, "ra\n", 3);
 	}
 	else
@@ -34,8 +34,8 @@ void	rb(t_input *input, t_stack *b)
 {
 	if (rotate_list(b))
 	{
-	input->op_counts.rb++;
-	input->op_counts.total_ops++;
+	input->op_counts->rb++;
+	input->op_counts->total_ops++;
 	write(1, "rb\n", 3);
 	}
 	else
@@ -51,8 +51,8 @@ void	rr(t_input *input, t_stack *a, t_stack *b)
 	res_b = rotate_list(b);
 	if (res_a && res_b)
 	{
-		input->op_counts.rr++;
-		input->op_counts.total_ops++;
+		input->op_counts->rr++;
+		input->op_counts->total_ops++;
 		write(1, "rr\n", 3);
 	}
 	if (!res_a) 

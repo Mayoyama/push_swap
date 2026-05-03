@@ -12,7 +12,7 @@ void	benchmark_mode(t_input *input)
 	bench_print_strategy(input);
 	//The total number of operations.
 	ft_putstr_fd("[bench] total_ops:   ", 2);
-	ft_putnbr_fd(input->op_counts.total_ops, 2);
+	ft_putnbr_fd(input->op_counts->total_ops, 2);
 	ft_putstr_fd("\n", 2);
 	// The count of each operation type(sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr)
 	ft_putstr_fd("[bench] ", 2);
@@ -46,40 +46,30 @@ static void	bench_print_strategy(t_input *input)
 static void bench_lineone_opcounts(t_input *input)
 {
 	ft_putstr_fd("sa:  ", 2);
-	padded_putnbr(input->op_counts.sa, 2);
+	padded_putnbr(input->op_counts->sa, 2);
 	ft_putstr_fd("  sb:  ", 2);
-	padded_putnbr(input->op_counts.sb, 2);
+	padded_putnbr(input->op_counts->sb, 2);
 	ft_putstr_fd("  ss:  ", 2);
-	padded_putnbr(input->op_counts.ss, 2);
+	padded_putnbr(input->op_counts->ss, 2);
 	ft_putstr_fd("  pa:  ", 2);
-	padded_putnbr(input->op_counts.pa, 2);
+	padded_putnbr(input->op_counts->pa, 2);
 	ft_putstr_fd("  pb:  ", 2);
-	padded_putnbr(input->op_counts.pb, 2);
+	padded_putnbr(input->op_counts->pb, 2);
 }
 
 static void bench_linetwo_opcounts(t_input *input)
 {
 	ft_putstr_fd("ra:  ", 2);
-	padded_putnbr(input->op_counts.ra, 2);
+	padded_putnbr(input->op_counts->ra, 2);
 	ft_putstr_fd("  rb:  ", 2);
-	padded_putnbr(input->op_counts.rb, 2);
+	padded_putnbr(input->op_counts->rb, 2);
 	ft_putstr_fd("  rr:  ", 2);
-	padded_putnbr(input->op_counts.rr, 2);
+	padded_putnbr(input->op_counts->rr, 2);
 	ft_putstr_fd("  rra:  ", 2);
-	padded_putnbr(input->op_counts.rra, 2);
+	padded_putnbr(input->op_counts->rra, 2);
 	ft_putstr_fd("  rrb:  ", 2);
-	padded_putnbr(input->op_counts.rrb, 2);
+	padded_putnbr(input->op_counts->rrb, 2);
 	ft_putstr_fd("  rrr:  ", 2);
-	padded_putnbr(input->op_counts.rrr, 2);
+	padded_putnbr(input->op_counts->rrr, 2);
 }
 
-void padded_putnbr(int num, int fd)
-{
-	if (num < 1000)
-		ft_putchar_fd(' ', 2);
-	if (num < 100)
-		ft_putchar_fd(' ', 2);
-	if (num < 10)
-		ft_putchar_fd(' ', 2);
-	ft_putnbr_fd(num, fd);
-}

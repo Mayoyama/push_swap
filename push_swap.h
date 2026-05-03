@@ -149,7 +149,7 @@ void		rrr(t_input *input, t_stack *a, t_stack *b);
 /* ************************************************************************** */
 
 void		ft_putdouble_fd(double d, int fd, int decimalplaces);
-void		padded_putnbr(int num, int fd);
+void		padded_putnbr_fd(int num, int fd);
 
 
 

@@ -23,6 +23,7 @@ t_input	*create_input_struct(void)
 	input->size = 0;
 	input->mod = NONE;
 	input->bench_mod = 0;
+	input->op_counts = 0;
 	input->disorder = 0.0;
 	return (input);
 }

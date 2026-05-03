@@ -28,8 +28,8 @@ void	pa(t_input *input, t_stack *a, t_stack *b)
 {
 	if (push_to_dest(a, b))
 	{
-		input->op_counts.pa++;
-		input->op_counts.total_ops++;
+		input->op_counts->pa++;
+		input->op_counts->total_ops++;
 		write(1, "pa\n", 3);
 	}
 	else
@@ -40,8 +40,8 @@ void	pb(t_input *input, t_stack *a, t_stack *b)
 {
 	if (push_to_dest(b, a))
 	{
-		input->op_counts.pb++;
-		input->op_counts.total_ops++;
+		input->op_counts->pb++;
+		input->op_counts->total_ops++;
 		write(1, "pb\n", 3);
 	}
 	else

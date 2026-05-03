@@ -25,3 +25,14 @@ void ft_putdouble_fd(double d, int fd, int decimalplaces)
 		}
 	}
 }
+
+void padded_putnbr_fd(int num, int fd)
+{
+	if (num < 1000)
+		ft_putchar_fd(' ', fd);
+	if (num < 100)
+		ft_putchar_fd(' ', fd);
+	if (num < 10)
+		ft_putchar_fd(' ', fd);
+	ft_putnbr_fd(num, fd);
+}

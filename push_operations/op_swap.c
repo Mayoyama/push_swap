@@ -27,8 +27,8 @@ void	sa(t_input *input, t_stack *a)
 {
 	if (swap_top_two(a))
 	{
-		input->op_counts.sa++;
-		input->op_counts.total_ops++;
+		input->op_counts->sa++;
+		input->op_counts->total_ops++;
 		write(1, "sa\n", 3);
 	}
 	else
@@ -39,8 +39,8 @@ void	sb(t_input *input, t_stack *b)
 {
 	if (swap_top_two(b))
 	{
-		input->op_counts.sb++;
-		input->op_counts.total_ops++;
+		input->op_counts->sb++;
+		input->op_counts->total_ops++;
 		write(1, "sb\n", 3);
 	}
 	else
@@ -56,8 +56,8 @@ void	ss(t_input *input, t_stack *a, t_stack *b)
 	res_b = swap_top_two(b);
 	if (res_a && res_b)
 	{
-		input->op_counts.ss++;
-		input->op_counts.total_ops++;
+		input->op_counts->ss++;
+		input->op_counts->total_ops++;
 		write(1, "ss\n", 3);
 	}
 	if (!res_a)
