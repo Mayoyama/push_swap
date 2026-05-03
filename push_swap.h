@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 15:58:26 by thours            #+#    #+#             */
-/*   Updated: 2026/05/03 14:32:11 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/03 16:58:56 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,7 @@ void		get_num_list(t_input *input, char *argv);
 int			check_for_duplicate(t_node *head);
 
 /**** GET INDEX AND TARGET ****/
-void		get_index_and_target(t_node *list);
 void		get_index(t_node *list);
-void		get_target(t_node *list);
 
 /**** DISORDER CHECKER ****/
 double		compute_disorder(t_node *lst);
@@ -157,10 +155,17 @@ void		padded_putnbr_fd(int num, int fd);
 /**** CREATE STACK STRUCTURE ****/
 t_stack	*create_stack_struct(t_input *input);
 
+/**** COST CALCULATION ****/
+void	calculate_cost(t_stack *stack, t_stack *target_stack);
+t_node	*get_target(t_stack *stack, t_node *node);
+int		get_push_cost(t_stack *target_stack, t_node *node);
+void	get_cheapest(t_node *list);
+
 /**** UTILS *****/
 void	get_above_med(t_stack *a, t_stack *b);
 int		algorithm_has_end(t_stack *a, t_stack *b);
 t_node	*find_smallest_value(t_node *list);
+int		ft_max(int a, int b);
 
 /* ************************************************************************** */
 /* *********************		SIMPLE ALGORITHM		********************* */

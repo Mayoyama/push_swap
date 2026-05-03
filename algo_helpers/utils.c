@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 22:33:34 by thours            #+#    #+#             */
-/*   Updated: 2026/05/02 22:50:08 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/03 16:00:26 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,11 @@ t_node	*find_smallest_value(t_node *list)
 		current = current->next;
 	}
 	return (smallest);
+}
+
+int	ft_max(int a, int b)
+{
+	if (a > b)
+		return (a);
+	return (b);
 }

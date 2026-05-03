@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 21:37:33 by thours            #+#    #+#             */
-/*   Updated: 2026/05/03 15:09:08 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/03 17:38:30 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	do_simple_algo(t_input *input)
 		write (2, "error\n", 6);
 		return ;
 	}
+	get_above_med(stack_a, stack_b);
+	print_stack(stack_a->list);
 	run_simple_algo(input, stack_a, stack_b);
 	///////////////////////////////////////////// DEBUGING
 	ft_printf("\n");

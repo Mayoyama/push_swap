@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 09:45:50 by thours            #+#    #+#             */
-/*   Updated: 2026/05/03 11:42:47 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/03 16:58:30 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,8 @@ void	print_stack(t_node *head)
 			ft_printf(" target = %d, ", current->target->value);
 		else
 			ft_printf(" target = NULL, ");
-		ft_printf("above_med = %d)\n", current->above_med);
+		ft_printf("above_med = %d, ", current->above_med);
+		ft_printf("push_cost = %d, cheapest = %d)\n", current->push_cost, current->cheapest);
 		current = current->next;
 	}
 	ft_printf("\n");

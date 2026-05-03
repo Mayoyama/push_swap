@@ -6,11 +6,30 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 17:19:58 by thours            #+#    #+#             */
-/*   Updated: 2026/05/03 15:06:43 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/03 17:44:48 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/*
+static void	split_stack(t_input *input)
+{
+	t_stack *stack_a = create_stack_struct(input);
+	t_stack *stack_b = create_stack_struct(NULL);
+	int	i = 0;
+	int starting_size = stack_a->size;
+	while (i < starting_size / 2)
+	{
+		pb(input, stack_a, stack_b);
+		i++;
+	}
+	calculate_cost(stack_b, stack_a);
+	ft_printf("STACK A:\n");
+	print_stack(stack_a->list);
+	ft_printf("STACK B:\n");
+	print_stack(stack_b->list);
+}*/
 
 int	main(int argc, char **argv)
 {

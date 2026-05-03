@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 10:31:17 by thours            #+#    #+#             */
-/*   Updated: 2026/05/03 15:03:40 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/03 16:23:02 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_input	*extract_user_input(char **argv)
 	if (check_for_duplicate(input->list) == 1)
 		return (free(input), NULL);
 	input->disorder = compute_disorder(input->list);
-	get_index_and_target(input->list);
+	get_index(input->list);
 	return (input);
 }
 
@@ -106,4 +106,28 @@ int	check_for_duplicate(t_node *head)
 		current = current->next;
 	}
 	return (0);
+}
+
+void	get_index(t_node *list)
+{
+	t_node	*current;
+	t_node	*looper;
+	int		under;
+	int		current_value;
+
+	current = list;
+	while (current)
+	{
+		under = 0;
+		current_value = current->value;
+		looper = list;
+		while (looper)
+		{
+			if (looper->value < current_value)
+				under++;
+			looper = looper->next;
+		}
+		current->index = under;
+		current = current->next;
+	}
 }
