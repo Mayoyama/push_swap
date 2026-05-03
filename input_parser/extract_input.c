@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 10:31:17 by thours            #+#    #+#             */
-/*   Updated: 2026/05/02 15:31:07 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/03 15:03:40 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_input	*extract_user_input(char **argv)
 	input->size = get_list_size(input->list);
 	if (check_for_duplicate(input->list) == 1)
 		return (free(input), NULL);
-	//////////// HERE CALCULATE DISORDER ////////////////////////
+	input->disorder = compute_disorder(input->list);
 	get_index_and_target(input->list);
 	return (input);
 }

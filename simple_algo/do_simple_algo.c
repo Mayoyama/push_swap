@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 21:37:33 by thours            #+#    #+#             */
-/*   Updated: 2026/05/03 12:27:35 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/03 15:09:08 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,11 @@ void	do_simple_algo(t_input *input)
 		return ;
 	}
 	run_simple_algo(input, stack_a, stack_b);
+	///////////////////////////////////////////// DEBUGING
+	ft_printf("\n");
 	print_stack(stack_a->list);
+	ft_printf("Total of operations: %d\n", input->op_counts->total_ops);
+	/////////////////////////////////////////////
 	free_stack(stack_a->list);
 	free(stack_a);
 	free(stack_b);
