@@ -218,10 +218,18 @@ The following sections were contributed by *thours*.
 
 - Makefile
 - push_swap.h
+- Input parser (check, extract, get_index, etc)
+- Libft
+- Low disorder mode (O(n2))
+- Medium disorder mode (O(n√n))
 
 The following sections were contributed by *speterse*.
 
--  README.md
-- a
+- README.md
+- Disorder checker
+- Adaptive mode
+- Benchmark mode
+- Push operations (pa, pb, ra, rb, etc)
+- High disorder (O(n log n)) 
 
 [Back to top](#table-of-contents)

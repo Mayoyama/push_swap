@@ -39,13 +39,31 @@ typedef enum e_mod
 	ADAPTATIVE,
 }				t_mod;
 
+// Keeps track of push operation usage counts
+typedef struct s_opcount
+{
+	int	pa;
+	int	pb;
+	int	sa;
+	int	sb;
+	int	ss;
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
+	int	total_ops;
+}				t_opcount;
+
 typedef struct s_input
 {
-	t_node	*list;
-	int		size;
-	t_mod	mod;
-	int		bench_mod;
-	double	disorder;
+	t_node		*list;
+	int			size;
+	t_mod		mod;
+	int			bench_mod;
+	t_opcount	op_counts;  //I think it would be useful to store the opcounts here
+	double		disorder;
 }				t_input;
 
 typedef struct s_stack
@@ -60,60 +78,80 @@ typedef struct s_stack
 /* ************************************************************************** */
 
 /**** USER INPUT CHECKING ****/
-int		check_input(int argc, char **argv);
-int		is_valid_list(char *str);
-long	ft_atoi_long(char *nptr, int *error);
-int		is_valid_int(char *str);
-int		is_parameter(char *argv);
+int			check_input(int argc, char **argv);
+int			is_valid_list(char *str);
+long		ft_atoi_long(char *nptr, int *error);
+int			is_valid_int(char *str);
+int			is_parameter(char *argv);
 
 /**** INPUT STRUCT FUNCTIONS ****/
-t_input	*create_input_struct(void);
-void	free_input(t_input *input);
+t_input		*create_input_struct(void);
+void		free_input(t_input *input);
 
 /**** NUM STRUCT FUNCTIONS ****/
-t_node	*create_num_node(int num);
-void	addback_node(t_node **head, int num, int *malloc_error);
-void	free_stack(t_node *head);
-void	print_stack(t_node *head);
-int		get_list_size(t_node *head);
+t_node		*create_num_node(int num);
+void		addback_node(t_node **head, int num, int *malloc_error);
+void		free_stack(t_node *head);
+void		print_stack(t_node *head);
+int			get_list_size(t_node *head);
 
 /**** EXTRACT USER INPUT ****/
-t_input	*extract_user_input(char **argv);
-void	get_parameter(t_input *input, char *argv);
-void	get_num_list(t_input *input, char *argv);
-int		check_for_duplicate(t_node *head);
+t_input		*extract_user_input(char **argv);
+void		get_parameter(t_input *input, char *argv);
+void		get_num_list(t_input *input, char *argv);
+int			check_for_duplicate(t_node *head);
 
 /**** GET INDEX AND TARGET ****/
-void	get_index_and_target(t_node *list);
-void	get_index(t_node *list);
-void	get_target(t_node *list);
+void		get_index_and_target(t_node *list);
+void		get_index(t_node *list);
+void		get_target(t_node *list);
 
 /**** DISORDER CHECKER ****/
-double	compute_disorder(t_node *lst);
+double		compute_disorder(t_node *lst);
+
+/* ************************************************************************** */
+/* *********************			MODES			************************* */
+/* ************************************************************************** */
+
+void		adaptive_modeset(t_input *input, t_stack *a, t_stack *b);
+
+void		benchmark_mode(t_input *input);
+static void	bench_print_strategy(t_input *input);
+static void	bench_lineone_opcounts(input);
+static void	bench_linetwo_opcounts(input);
 
 /* ************************************************************************** */
 /* *********************	  PUSH OPERATIONS		************************* */
 /* ************************************************************************** */
 
 /**** PUSH ****/
-void	push_to_dest(t_stack *dest, t_stack *src);
-void	pa(t_stack *a, t_stack *b);
-void	pb(t_stack *a, t_stack *b);
+int			push_to_dest(t_stack *dest, t_stack *src);
+void		pa(t_input *input, t_stack *a, t_stack *b);
+void		pb(t_input *input, t_stack *a, t_stack *b);
 /**** SWAP ****/
-void	swap_top_two(t_stack *stack);
-void	sa(t_stack *a);
-void	sb(t_stack *b);
-void	ss(t_stack *a, t_stack *b);
+int			swap_top_two(t_stack *stack);
+void		sa(t_input *input, t_stack *a);
+void		sb(t_input *input, t_stack *b);
+void		ss(t_input *input, t_stack *a, t_stack *b);
 /**** ROTATE ****/
-void	rotate_list(t_stack *stack);
-void	ra(t_stack *a);
-void	rb(t_stack *b);
-void	rr(t_stack *a, t_stack *b);
+int			rotate_list(t_stack *stack);
+void		ra(t_input *input, t_stack *a);
+void		rb(t_input *input, t_stack *b);
+void		rr(t_input *input, t_stack *a, t_stack *b);
 /**** REVERSE ****/
-void	rev_rotate_list(t_stack *stack);
-void	rra(t_stack *a);
-void	rrb(t_stack *b);
-void	rrr(t_stack *a, t_stack *b);
+int			rev_rotate_list(t_stack *stack);
+void		rra(t_input *input, t_stack *a);
+void		rrb(t_input *input, t_stack *b);
+void		rrr(t_input *input, t_stack *a, t_stack *b);
+
+/* ************************************************************************** */
+/* *********************	 HELPER FUNCTIONS		************************* */
+/* ************************************************************************** */
+
+void		ft_putdouble_fd(double d, int fd, int decimalplaces);
+void		padded_putnbr(int num, int fd);
+
+
 
 
 #endif
