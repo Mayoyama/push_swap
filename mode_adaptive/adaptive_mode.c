@@ -5,11 +5,11 @@ void	adaptive_modeset(t_input *input, t_stack *a, t_stack *b)
 
 	input->disorder = compute_disorder(input->list);
 	if (input->disorder < 0.2)
-		//INSERT: Low disorder mode function here
+		do_simple_algo(input)
 	else if (input->disorder < 0.5)
 		//INSERT: Mid disorder mode function here
-	else
-		//INSERT: High disorder mode function here
+	else 
+		start_complex_mode(input);
 }
 
 /*Low disorder: if disorder < 0.2, your chosen method must run in O(n2) time.

@@ -54,14 +54,24 @@ void	do_simple_algo(t_input *input)
 */
 static void	extract_node(t_input *input, t_stack *a, t_stack *b, t_node *node)
 {
-	while (node->prev != NULL)
+	if (a->list == node)
+		pb(input, a, b);
+	else if (a->list->next == node)
 	{
-		if (node->above_med == 0)
-			ra(input, a);
-		else
-			rra(input, a);
+		sa(input, a);
+		pb(input, a, b);
 	}
-	pb(input, a, b);
+	else
+	{
+		while (a->list != node)
+		{
+			if (node->above_med == 0)
+				ra(input, a);
+			else
+				rra(input, a);
+		}
+		pb(input, a, b);
+	}
 }
 
 /*

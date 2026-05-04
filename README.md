@@ -174,18 +174,35 @@ Error
 
 ### Decision Behind Sorting Algorithms Choices
 
-> text explaining which algorithms we chose and why
-
-Decision should relate to the following targets
+Decisions were based on the following targets.
 
 For 100 random numbers, your program should use:
 - Less than 2000 operations to pass (minimum requirement)
 - Less than 1500 operations for good performance
 - Less than 700 operations for excellent performance
-- For 500 random numbers, your program should use:
+
+For 500 random numbers, your program should use:
 - Less than 12000 operations to pass (minimum requirement)
 - Less than 8000 operations for good performance
 - Less than 5500 operations for excellent performance
+
+#### (Basic)
+
+> text explaining which algorithm we chose and why
+
+#### (Medium)
+
+> text explaining which algorithm we chose and why
+
+#### LSD radix + Turk optimisation layer
+
+At first, a Mechanical Turk style sorting algorithm was considered, as it potentially can have quite good results according to the research. However, after evaluating it's complexity, it was found to not comply with the (O(n log n)) specification (at worst it is (O(n2)).
+
+However, I decided to use Mechanical Turk optimisations of a LSD Radix method, in order to lower push_swap operations
+
+
+
+
 
 ### Considerations Regarding the Disorder Metric
 
@@ -210,10 +227,10 @@ argument (upper bounds) for time and space within the Push_swap model.
 
 ### Documentation & References
 
-- a
-- a
-- a
-- a
+- https://medium.com/@ayogun/push-swap-c1f5d2d41e97
+- https://www.youtube.com/watch?v=wRvipSG4Mmk&t=4s
+- https://www.geeksforgeeks.org/dsa/radix-sort/
+- https://www.geeksforgeeks.org/c/extract-bits-in-c/
 
 ### Use of AI
 

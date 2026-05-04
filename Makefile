@@ -18,7 +18,7 @@ SRCS = 	main.c \
 		algo_helpers/stack_struct_functions.c \
 		algo_helpers/get_above_med.c \
 		algo_helpers/utils.c \
-		simple_algo/do_simple_algo.c
+		simple_algo/do_simple_algo.c 
 # missing files :
 # mode_adaptive/adaptive_mode.c
 
