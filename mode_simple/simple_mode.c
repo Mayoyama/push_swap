@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_simple_algo.c                                   :+:      :+:    :+:   */
+/*   simple_mode.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 21:37:33 by thours            #+#    #+#             */
-/*   Updated: 2026/05/03 17:38:30 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/04 14:16:04 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	do_simple_algo(t_input *input)
 		write (2, "error\n", 6);
 		return ;
 	}
-	get_above_med(stack_a, stack_b);
-	print_stack(stack_a->list);
+	get_above_med(stack_a, stack_b); /////////////////////
+	print_stack(stack_a->list); ///////////////////////
 	run_simple_algo(input, stack_a, stack_b);
 	///////////////////////////////////////////// DEBUGING
 	ft_printf("\n");
@@ -54,11 +54,11 @@ void	do_simple_algo(t_input *input)
  *		- Once the smallest node is on the top of A, do a push operation
  *		to put it on the top of B.
 */
-static void	extract_node(t_input *input, t_stack *a, t_stack *b, t_node *node)
+void	push_to_b(t_input *input, t_stack *a, t_stack *b, t_node *node)
 {
 	while (node->prev != NULL)
 	{
-		if (node->above_med == 0)
+		if (node->above_med == 1)
 			ra(input, a);
 		else
 			rra(input, a);
@@ -83,7 +83,7 @@ void	run_simple_algo(t_input *input, t_stack *a, t_stack *b)
 	{
 		get_above_med(a, b);
 		smallest = find_smallest_value(a->list);
-		extract_node(input, a, b, smallest);
+		push_to_b(input, a, b, smallest);
 	}
 	while (b->size > 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 17:19:58 by thours            #+#    #+#             */
-/*   Updated: 2026/05/04 04:21:17 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/04 14:16:33 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	main(int argc, char **argv)
 			ft_printf("list size = %d\n", input->size);
 			ft_printf("disorder = ");
 			ft_putdouble_fd(input->disorder, 1, 2);
-			ft_printf("\nstarting simple algorithm:\n\n");
-			do_simple_algo(input);
+			ft_printf("\nstarting medium algorithm:\n\n");
+			do_medium_algo(input);
 		}
 		else
 			write(2, "error\n", 6);

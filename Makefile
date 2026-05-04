@@ -18,7 +18,10 @@ SRCS = 	main.c \
 		algo_helpers/get_above_med.c \
 		algo_helpers/cost_calculation.c \
 		algo_helpers/utils.c \
-		simple_algo/do_simple_algo.c
+		mode_simple/simple_mode.c \
+		mode_medium/medium_mode.c \
+		mode_medium/utils.c \
+		mode_medium/handle_chunks.c
 # missing files :
 # mode_adaptive/adaptive_mode.c
 

@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 22:33:34 by thours            #+#    #+#             */
-/*   Updated: 2026/05/04 04:16:43 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/04 14:12:17 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,22 +46,21 @@ t_node	*find_smallest_value(t_node *list)
 	return (smallest);
 }
 
-t_node	*find_biggest_value(t_node *list)
+int	get_pos(t_node *node, t_node *list)
 {
 	t_node	*current;
-	t_node	*biggest;
+	int		pos;
 
-	if (!list)
-		return (NULL);
 	current = list;
-	biggest = list;
+	pos = 0;
 	while (current)
 	{
-		if (current->value > biggest->value)
-			biggest = current;
+		if (node == current)
+			return (pos);
+		pos++;
 		current = current->next;
 	}
-	return (biggest);
+	return (pos);
 }
 
 int	ft_max(int a, int b)

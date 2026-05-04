@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 22:09:32 by thours            #+#    #+#             */
-/*   Updated: 2026/05/03 17:39:37 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/04 13:10:32 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ static void	get_med_b(t_stack *b)
 
 void	get_above_med(t_stack *a, t_stack *b)
 {
-	if (a->list)
+	if (a && a->list)
 		get_med_a(a);
-	if (b->list)
+	if (b && b->list)
 		get_med_b(b);
 }
