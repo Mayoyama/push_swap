@@ -117,6 +117,13 @@ double		compute_disorder(t_node *lst);
 
 void		adaptive_modeset(t_input *input, t_stack *a, t_stack *b);
 
+void		start_complex_mode(t_input *input);
+void		set_radix_index(t_node *head);
+int			get_max_bitsize(int size);
+void		radix(t_input *input, t_stack *a, t_stack *b);
+void		mem_cleanup(t_input *input, t_stack *a, t_stack *b);
+int			is_sorted(t_stack *a);
+
 void		benchmark_mode(t_input *input);
 
 /* ************************************************************************** */

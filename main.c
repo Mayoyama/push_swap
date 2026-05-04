@@ -28,7 +28,8 @@ int	main(int argc, char **argv)
 			ft_printf("disorder = ");
 			ft_putdouble_fd(input->disorder, 1, 2);
 			ft_printf("\nstarting simple algorithm:\n\n");
-			do_simple_algo(input);
+			start_complex_mode(input);
+			//do_simple_algo(input);
 		}
 		else
 			write(2, "error\n", 6);
