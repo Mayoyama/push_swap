@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 10:58:07 by thours            #+#    #+#             */
-/*   Updated: 2026/05/04 12:20:18 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/04 17:48:49 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	get_chunk_size(t_stack *stack)
 	i = 0;
 	while ((i * i) < stack->size)
 		i++;
-	return (i);
+	return (stack->size / 2);
 }
 
 int	get_chunk_count(int chunk_size, t_stack *stack)

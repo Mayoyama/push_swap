@@ -21,7 +21,8 @@ SRCS = 	main.c \
 		mode_simple/simple_mode.c \
 		mode_medium/medium_mode.c \
 		mode_medium/utils.c \
-		mode_medium/handle_chunks.c
+		mode_medium/handle_chunks.c \
+		mode_medium/chunk_reinsertion.c
 # missing files :
 # mode_adaptive/adaptive_mode.c
 

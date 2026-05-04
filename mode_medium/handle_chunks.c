@@ -6,30 +6,29 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 12:43:40 by thours            #+#    #+#             */
-/*   Updated: 2026/05/04 14:15:11 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/04 18:02:38 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	manage_chunk(t_input *input, t_stack *a, t_stack *b, int start, int end)
+void	manage_chunk(t_input *input, t_stack *a, int start, int end)
 {
 	t_node	*chunk_node;
 	int		i;
+	t_stack *b;
 
+	b = a->twin_stack;
 	i = 0;
 	while (start + i <= end)
 	{
-		ft_printf("extracting from id %d to %d\n", start, end);
 		chunk_node = find_cheapest_to_push(a, start, end);
-		ft_printf("cheapest to push = %d\n", chunk_node->index);
 		push_to_b(input, a, b, chunk_node);
+		if (chunk_node->index < (end - start) / 2)
+			rb(input, b);
 		i++;
 	}
-	ft_printf("STACK A:\n");
-	print_stack(a->list);
-	ft_printf("STACK B:\n");
-	print_stack(b->list); ft_printf("\n");
+	handle_chunk_reinsertion(a, b, input);
 }
 
 t_node	*find_cheapest_to_push(t_stack *a, int start, int end)
@@ -49,10 +48,7 @@ t_node	*find_cheapest_to_push(t_stack *a, int start, int end)
 			start++;
 			continue ;
 		}
-		if (current->above_med == 1)
-			ops_to_do = get_pos(current, a->list);
-		else
-			ops_to_do = a->size - get_pos(current, a->list);
+		ops_to_do = get_ops_to_do(current, a);
 		if (ops_to_do < biggest_diff)
 		{
 			cheapest = current;
@@ -61,4 +57,15 @@ t_node	*find_cheapest_to_push(t_stack *a, int start, int end)
 		start++;
 	}
 	return (cheapest);
+}
+
+int	get_ops_to_do(t_node *node, t_stack *stack)
+{
+	int	ops_to_do;
+
+	if (node->above_med == 1)
+			ops_to_do = get_pos(node, stack->list);
+		else
+			ops_to_do = stack->size - get_pos(node, stack->list);
+	return (ops_to_do);
 }

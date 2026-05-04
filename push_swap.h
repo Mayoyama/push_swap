@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 15:58:26 by thours            #+#    #+#             */
-/*   Updated: 2026/05/04 13:43:25 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/04 17:08:38 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,10 @@ typedef struct s_input
 
 typedef struct s_stack
 {
-	t_node	*list;
-	t_node	*tail;
-	int		size;
+	t_node			*list;
+	t_node			*tail;
+	int				size;
+	struct s_stack	*twin_stack;
 }				t_stack;
 
 /* ************************************************************************** */
@@ -175,17 +176,30 @@ void	reset_cost_flags(t_node *list);
 
 void	do_simple_algo(t_input *input);
 void	run_simple_algo(t_input *input, t_stack *a, t_stack *b);
+void	push_to_b(t_input *input, t_stack *a, t_stack *b, t_node *node);
 
 /* ************************************************************************** */
 /* *********************		MEDIUM ALGORITHM		********************* */
 /* ************************************************************************** */
 
+/**** MEDIUM MODE ****/
 void	do_medium_algo(t_input *input);
-void	run_medium_algo(t_input *input, t_stack *a, t_stack *b);
-void	run_phase_one(t_input *input, t_stack *a, t_stack *b);
-void	manage_chunk(t_input *input, t_stack *a, t_stack *b, int start, int end);
+void	run_medium_algo(t_input *input, t_stack *a);
+void	run_phase_one(t_input *input, t_stack *a);
+
+/**** MANAGE CHUNKS ****/
+void	manage_chunk(t_input *input, t_stack *a, int start, int end);
 t_node	*find_cheapest_to_push(t_stack *a, int start, int end);
-void	push_to_b(t_input *input, t_stack *a, t_stack *b, t_node *node);
+int		get_ops_to_do(t_node *node, t_stack *stack);
+
+/**** CHUNK REINSERTION ****/
+void	handle_chunk_reinsertion(t_stack *a, t_stack *b, t_input *input);
+void	reinsert_chunk_node(t_stack *a, t_stack *b, t_input *input);
+void	put_on_top_double(t_node *tar, t_node *node, t_stack *a, t_input *inp);
+void	put_on_top_a(t_node *node, t_stack *a, t_input *inp);
+void	put_on_top_b(t_node *node, t_stack *b, t_input *inp);
+
+/**** UTILS ****/
 int		get_chunk_size(t_stack *stack);
 int		get_chunk_count(int chunk_size, t_stack *stack);
 t_node	*find_node_index(t_node *list, int index);
