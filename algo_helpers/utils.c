@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 22:33:34 by thours            #+#    #+#             */
-/*   Updated: 2026/05/03 16:00:26 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/04 04:16:43 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,44 @@ t_node	*find_smallest_value(t_node *list)
 	return (smallest);
 }
 
+t_node	*find_biggest_value(t_node *list)
+{
+	t_node	*current;
+	t_node	*biggest;
+
+	if (!list)
+		return (NULL);
+	current = list;
+	biggest = list;
+	while (current)
+	{
+		if (current->value > biggest->value)
+			biggest = current;
+		current = current->next;
+	}
+	return (biggest);
+}
+
 int	ft_max(int a, int b)
 {
 	if (a > b)
 		return (a);
 	return (b);
+}
+
+void	reset_cost_flags(t_node *list)
+{
+	t_node	*current;
+
+	if (!list)
+		return ;
+	current = list;
+	while (current)
+	{
+		current->cheapest = 0;
+		current->push_cost = 0;
+		current->target = 0;
+		current->above_med = 0;
+		current = current->next;
+	}
 }

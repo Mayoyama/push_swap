@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/03 15:33:05 by thours            #+#    #+#             */
-/*   Updated: 2026/05/03 17:44:22 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/04 04:12:44 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,18 +61,23 @@ t_node	*get_target(t_stack *stack, t_node *node)
 {
 	t_node	*target;
 	t_node	*current;
+	int		best_diff;
 
-	target = stack->list;
+	target = NULL;
+	best_diff = INT_MAX;
 	current = stack->list;
 	while (current)
 	{
-		if (current->value < node->value && current->value > target->value)
+		if (current->value > node->value && current->value - node->value < best_diff)
+		{
 			target = current;
+			best_diff = current->value - node->value;
+		}
 		current = current->next;
 	}
-	if (target->value < node->value && target->index < node->index - 1)
-		return (target);
-	return (NULL);
+	if (!target)
+		return(find_smallest_value(stack->list));
+	return (target);
 }
 
 int	get_push_cost(t_stack *target_stack, t_node *node)
@@ -103,13 +108,9 @@ void	get_cheapest(t_node *list)
 	cheapest = list;
 	while (current)
 	{
-		if (current->push_cost <= cheapest->push_cost)
-		{
-			if (current->push_cost < cheapest->push_cost)
-				cheapest->cheapest = 0;
-			current->cheapest = 1;
+		if (current->push_cost < cheapest->push_cost)
 			cheapest = current;
-		}
 		current = current->next;
 	}
+	cheapest->cheapest = 1;
 }

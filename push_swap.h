@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 15:58:26 by thours            #+#    #+#             */
-/*   Updated: 2026/05/03 16:58:56 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/04 04:18:31 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,7 +165,9 @@ void	get_cheapest(t_node *list);
 void	get_above_med(t_stack *a, t_stack *b);
 int		algorithm_has_end(t_stack *a, t_stack *b);
 t_node	*find_smallest_value(t_node *list);
+t_node	*find_biggest_value(t_node *list);
 int		ft_max(int a, int b);
+void	reset_cost_flags(t_node *list);
 
 /* ************************************************************************** */
 /* *********************		SIMPLE ALGORITHM		********************* */
