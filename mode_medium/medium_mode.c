@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 04:38:10 by thours            #+#    #+#             */
-/*   Updated: 2026/05/04 17:22:10 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/04 21:41:38 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	do_medium_algo(t_input *input)
 void	run_medium_algo(t_input *input, t_stack *a)
 {
 	run_phase_one(input, a);
+	handle_chunk_reinsertion(a, a->twin_stack, input);
 	put_on_top_a(find_smallest_value(a->list), a, input);
-	//ft_printf("\nAfter sorting:\n");
-	//print_stack(a->list);
-	ft_printf("medium mode finished\n");
+	if (algorithm_has_end(a, a->twin_stack))
+		ft_printf("medium mode finished\n");
 	ft_printf("Disorder = ");
 	ft_putdouble_fd(input->disorder * 100, 1, 2);
 	ft_printf("%%\nTotal count of operations = %d\n", input->op_counts->total_ops);

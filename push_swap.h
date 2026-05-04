@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 15:58:26 by thours            #+#    #+#             */
-/*   Updated: 2026/05/04 17:08:38 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/04 20:54:16 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,8 +189,9 @@ void	run_phase_one(t_input *input, t_stack *a);
 
 /**** MANAGE CHUNKS ****/
 void	manage_chunk(t_input *input, t_stack *a, int start, int end);
-t_node	*find_cheapest_to_push(t_stack *a, int start, int end);
-int		get_ops_to_do(t_node *node, t_stack *stack);
+int		is_in_chunk(t_node *node, int start, int end);
+void	optimize_b_insertion(t_input *input, t_stack *b, int start, int end);
+int		chunk_has_element_in_a(t_stack *a, int start, int end);
 
 /**** CHUNK REINSERTION ****/
 void	handle_chunk_reinsertion(t_stack *a, t_stack *b, t_input *input);

@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 15:39:20 by thours            #+#    #+#             */
-/*   Updated: 2026/05/04 16:58:19 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/04 22:28:40 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	handle_chunk_reinsertion(t_stack *a, t_stack *b, t_input *input)
 {
+	put_on_top_b(find_node_index(b->list, input->size - 1), b, input);
+	pa(input, a, b);
 	while (b->size > 0)
 	{
 		get_above_med(a, b);
@@ -44,12 +46,12 @@ void	put_on_top_double(t_node *tar, t_node *node, t_stack *a, t_input *inp)
 	b = a->twin_stack;
 	if (tar->above_med && node->above_med)
 	{
-		while (tar->prev && node->prev)
+		while (a->list != tar && b->list != node)
 			rr(inp, a, b);
 	}
 	if (!tar->above_med && !node->above_med)
 	{
-		while (tar->prev && node->prev)
+		while (a->list != tar && b->list != node)
 			rrr(inp, a, b);
 	}
 	put_on_top_a(tar, a, inp);

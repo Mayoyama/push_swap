@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 12:43:40 by thours            #+#    #+#             */
-/*   Updated: 2026/05/04 18:02:38 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/04 22:17:43 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,58 +14,54 @@
 
 void	manage_chunk(t_input *input, t_stack *a, int start, int end)
 {
-	t_node	*chunk_node;
-	int		i;
 	t_stack *b;
 
 	b = a->twin_stack;
-	i = 0;
-	while (start + i <= end)
+	while (chunk_has_element_in_a(a, start, end))
 	{
-		chunk_node = find_cheapest_to_push(a, start, end);
-		push_to_b(input, a, b, chunk_node);
-		if (chunk_node->index < (end - start) / 2)
-			rb(input, b);
-		i++;
+		if (is_in_chunk(a->list, start, end))
+		{
+			pb(input, a, b);
+			optimize_b_insertion(input, b, start, end);
+		}
+		else if (is_in_chunk(a->tail, start, end))
+		{
+			rra(input, a);
+			pb(input, a, b);
+			optimize_b_insertion(input, b, start, end);
+		}
+		else
+			ra(input, a);
 	}
-	handle_chunk_reinsertion(a, b, input);
 }
 
-t_node	*find_cheapest_to_push(t_stack *a, int start, int end)
+int	is_in_chunk(t_node *node, int start, int end)
 {
-	int		ops_to_do;
-	int		biggest_diff;
-	t_node	*cheapest;
+	if (!node)
+		return (0);
+	if (node->index >= start && node->index <= end)
+		return (1);
+	return (0);
+}
+
+void	optimize_b_insertion(t_input *input, t_stack *b, int start, int end)
+{
+	if (b->list->index < (end - start) / 2)
+		rb(input, b);
+}
+
+int	chunk_has_element_in_a(t_stack *a, int start, int end)
+{
 	t_node	*current;
 
-	biggest_diff = INT_MAX;
-	get_above_med(a, NULL);
-	while (start <= end)
+	if (!a->list)
+		return (0);
+	current = a->list;
+	while (current)
 	{
-		current = find_node_index(a->list, start);
-		if (!current)
-		{
-			start++;
-			continue ;
-		}
-		ops_to_do = get_ops_to_do(current, a);
-		if (ops_to_do < biggest_diff)
-		{
-			cheapest = current;
-			biggest_diff = ops_to_do;
-		}
-		start++;
+		if (current->index >= start && current->index <= end)
+			return (1);
+		current = current->next;
 	}
-	return (cheapest);
-}
-
-int	get_ops_to_do(t_node *node, t_stack *stack)
-{
-	int	ops_to_do;
-
-	if (node->above_med == 1)
-			ops_to_do = get_pos(node, stack->list);
-		else
-			ops_to_do = stack->size - get_pos(node, stack->list);
-	return (ops_to_do);
+	return (0);
 }
