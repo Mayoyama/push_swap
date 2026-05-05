@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 22:33:34 by thours            #+#    #+#             */
-/*   Updated: 2026/05/04 14:12:17 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/05 14:33:05 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	algorithm_has_end(t_stack *a, t_stack *b)
 	if (b->size != 0)
 		return (0);
 	current = a->list;
-	while(current->next)
+	while (current->next)
 	{
 		if (current->value > current->next->value)
 			return (0);

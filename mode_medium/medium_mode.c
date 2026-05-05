@@ -6,12 +6,25 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 04:38:10 by thours            #+#    #+#             */
-/*   Updated: 2026/05/04 21:41:38 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/05 12:46:41 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+/*
+ *	HOW THIS CHUNK BASED ALGORITHM WORKS :
+ *	First split in chunks (originally √n chunks, but it appeared in the
+ *	optimisation phase that chunk size =  n / 2 was more efficient) of items of
+ *	the list that follow themselves by relative index.
+ *	It extracts chunks one after another in the B pile. After all item are on B,
+ *	put first the item with highest value in A. Once it's done, it will reinsert
+ *	every item one by one, by finding the cheapest item to push each time
+ *	(cheapest = the smallest cost in operations to put an item on top of B and
+ *	it's target with the closest value above it on top of A)
+ *	After that and when every item is back on A and sorted, put the item with
+ *	smallest value on top.
+*/
 void	do_medium_algo(t_input *input)
 {
 	t_stack	*stack_a;
@@ -38,7 +51,7 @@ void	run_medium_algo(t_input *input, t_stack *a)
 		ft_printf("medium mode finished\n");
 	ft_printf("Disorder = ");
 	ft_putdouble_fd(input->disorder * 100, 1, 2);
-	ft_printf("%%\nTotal count of operations = %d\n", input->op_counts->total_ops);
+	ft_printf("%%\nTotal count of operations = %d\n", input->op_counts->total_ops);//////////////
 }
 
 void	run_phase_one(t_input *input, t_stack *a)
@@ -48,7 +61,6 @@ void	run_phase_one(t_input *input, t_stack *a)
 	int	chunk_end_id;
 
 	chunk_size = get_chunk_size(a);
-	ft_printf("Chunk size is %d\n", chunk_size);
 	chunk_start_id = 0;
 	chunk_end_id = chunk_size - 1;
 	while (chunk_start_id < input->size)

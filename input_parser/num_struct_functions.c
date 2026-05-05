@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 09:45:50 by thours            #+#    #+#             */
-/*   Updated: 2026/05/03 16:58:30 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/05 14:37:18 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	free_stack(t_node *head)
 void	print_stack(t_node *head)
 {
 	t_node	*current;
-	
+
 	if (!head)
 	{
 		ft_printf("NULL\n");
@@ -88,7 +88,8 @@ void	print_stack(t_node *head)
 		else
 			ft_printf(" target = NULL, ");
 		ft_printf("above_med = %d, ", current->above_med);
-		ft_printf("push_cost = %d, cheapest = %d)\n", current->push_cost, current->cheapest);
+		ft_printf("push_cost = %d, cheapest = %d)\n",
+			current->push_cost, current->cheapest);
 		current = current->next;
 	}
 	ft_printf("\n");
@@ -98,7 +99,7 @@ int	get_list_size(t_node *head)
 {
 	t_node	*current;
 	int		count;
-	
+
 	if (!head)
 		return (0);
 	count = 0;

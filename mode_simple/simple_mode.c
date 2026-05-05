@@ -6,7 +6,7 @@
 /*   By: speterse <speterse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 21:37:33 by thours            #+#    #+#             */
-/*   Updated: 2026/05/05 12:38:41 by speterse         ###   ########.fr       */
+/*   Updated: 2026/05/05 17:04:53 by speterse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
  *	HOW THIS ALGORITHM WORKS :
- *	
+ *
  *	This algorithm is a selection sort adaptation. At each loop, search for the
  *	smallest value in stack A, and put it at the top of stack B, until only one
  *	item is left on stack A. Once it done, put everything back to stack A.
@@ -31,14 +31,7 @@ void	do_simple_algo(t_input *input)
 		write (2, "error\n", 6);
 		return ;
 	}
-	get_above_med(stack_a, stack_b); /////////////////////
-	print_stack(stack_a->list); ///////////////////////
 	run_simple_algo(input, stack_a, stack_b);
-	///////////////////////////////////////////// DEBUGING
-	ft_printf("\n");
-	print_stack(stack_a->list);
-	ft_printf("Total of operations: %d\n", input->op_counts->total_ops);
-	/////////////////////////////////////////////
 	free_stack(stack_a->list);
 	free(stack_a);
 	free(stack_b);
@@ -78,7 +71,7 @@ void	push_to_b(t_input *input, t_stack *a, t_stack *b, t_node *node)
 void	run_simple_algo(t_input *input, t_stack *a, t_stack *b)
 {
 	t_node	*smallest;
-	
+
 	while (a->size > 1)
 	{
 		get_above_med(a, b);
