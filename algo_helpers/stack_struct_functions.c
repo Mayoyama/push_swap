@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 21:40:24 by thours            #+#    #+#             */
-/*   Updated: 2026/05/02 22:08:50 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/04 16:12:25 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_stack	*create_stack_struct(t_input *input)
 	stack->list = NULL;
 	stack->tail = NULL;
 	stack->size = 0;
+	stack->twin_stack = NULL;
 	if (input)
 	{
 		stack->list = input->list;

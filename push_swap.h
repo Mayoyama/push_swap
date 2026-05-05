@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 15:58:26 by thours            #+#    #+#             */
-/*   Updated: 2026/05/03 14:32:11 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/04 20:54:16 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,10 @@ typedef struct s_input
 
 typedef struct s_stack
 {
-	t_node	*list;
-	t_node	*tail;
-	int		size;
+	t_node			*list;
+	t_node			*tail;
+	int				size;
+	struct s_stack	*twin_stack;
 }				t_stack;
 
 /* ************************************************************************** */
@@ -104,9 +105,7 @@ void		get_num_list(t_input *input, char *argv);
 int			check_for_duplicate(t_node *head);
 
 /**** GET INDEX AND TARGET ****/
-void		get_index_and_target(t_node *list);
 void		get_index(t_node *list);
-void		get_target(t_node *list);
 
 /**** DISORDER CHECKER ****/
 double		compute_disorder(t_node *lst);
@@ -164,10 +163,19 @@ void		padded_putnbr_fd(int num, int fd);
 /**** CREATE STACK STRUCTURE ****/
 t_stack	*create_stack_struct(t_input *input);
 
+/**** COST CALCULATION ****/
+void	calculate_cost(t_stack *stack, t_stack *target_stack);
+t_node	*get_target(t_stack *stack, t_node *node);
+int		get_push_cost(t_stack *target_stack, t_node *node);
+void	get_cheapest(t_node *list);
+
 /**** UTILS *****/
 void	get_above_med(t_stack *a, t_stack *b);
 int		algorithm_has_end(t_stack *a, t_stack *b);
 t_node	*find_smallest_value(t_node *list);
+int		get_pos(t_node *node, t_node *list);
+int		ft_max(int a, int b);
+void	reset_cost_flags(t_node *list);
 
 /* ************************************************************************** */
 /* *********************		SIMPLE ALGORITHM		********************* */
@@ -175,5 +183,33 @@ t_node	*find_smallest_value(t_node *list);
 
 void	do_simple_algo(t_input *input);
 void	run_simple_algo(t_input *input, t_stack *a, t_stack *b);
+void	push_to_b(t_input *input, t_stack *a, t_stack *b, t_node *node);
+
+/* ************************************************************************** */
+/* *********************		MEDIUM ALGORITHM		********************* */
+/* ************************************************************************** */
+
+/**** MEDIUM MODE ****/
+void	do_medium_algo(t_input *input);
+void	run_medium_algo(t_input *input, t_stack *a);
+void	run_phase_one(t_input *input, t_stack *a);
+
+/**** MANAGE CHUNKS ****/
+void	manage_chunk(t_input *input, t_stack *a, int start, int end);
+int		is_in_chunk(t_node *node, int start, int end);
+void	optimize_b_insertion(t_input *input, t_stack *b, int start, int end);
+int		chunk_has_element_in_a(t_stack *a, int start, int end);
+
+/**** CHUNK REINSERTION ****/
+void	handle_chunk_reinsertion(t_stack *a, t_stack *b, t_input *input);
+void	reinsert_chunk_node(t_stack *a, t_stack *b, t_input *input);
+void	put_on_top_double(t_node *tar, t_node *node, t_stack *a, t_input *inp);
+void	put_on_top_a(t_node *node, t_stack *a, t_input *inp);
+void	put_on_top_b(t_node *node, t_stack *b, t_input *inp);
+
+/**** UTILS ****/
+int		get_chunk_size(t_stack *stack);
+int		get_chunk_count(int chunk_size, t_stack *stack);
+t_node	*find_node_index(t_node *list, int index);
 
 #endif

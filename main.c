@@ -6,7 +6,7 @@
 /*   By: speterse <speterse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 17:19:58 by thours            #+#    #+#             */
-/*   Updated: 2026/05/05 12:15:21 by speterse         ###   ########.fr       */
+/*   Updated: 2026/05/05 12:31:40 by speterse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int	main(int argc, char **argv)
 			ft_printf("list size = %d\n", input->size);
 			ft_printf("disorder = ");
 			ft_putdouble_fd(input->disorder, 1, 2);
-			ft_printf("\nstarting simple algorithm:\n\n");
+			ft_printf("\nstarting medium algorithm:\n\n");
 			start_complex_mode(input);
-			//do_simple_algo(input);
+			//do_medium_algo(input);
 		}
 		else
 			write(2, "error\n", 6);

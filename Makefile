@@ -6,7 +6,6 @@ SRCS = 	main.c \
 		input_parser/input_struct_functions.c \
 		input_parser/num_struct_functions.c \
 		input_parser/extract_input.c \
-		input_parser/get_index_and_target.c \
 		push_operations/op_push.c \
 		push_operations/op_reverse_rotate.c \
 		push_operations/op_rotate.c \
@@ -17,8 +16,13 @@ SRCS = 	main.c \
 		mode_complex/complex_mode.c \
 		algo_helpers/stack_struct_functions.c \
 		algo_helpers/get_above_med.c \
+		algo_helpers/cost_calculation.c \
 		algo_helpers/utils.c \
-		simple_algo/do_simple_algo.c 
+		mode_simple/simple_mode.c \
+		mode_medium/medium_mode.c \
+		mode_medium/utils.c \
+		mode_medium/handle_chunks.c \
+		mode_medium/chunk_reinsertion.c
 # missing files :
 # mode_adaptive/adaptive_mode.c
 

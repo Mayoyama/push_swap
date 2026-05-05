@@ -1,0 +1,89 @@
+Tests with 51.38% disorder
+
+Basic algorithm versin 1:
+- 14311
+
+Pre sorting chunk on B
+- 14301
+
+chunk size = stack size / 5
+- 6038
+
+``/ 6
+ - 6894
+
+ `` / 7
+ - 6885
+
+ `` / 8
+ - 7475
+
+ `` / 9
+ - 8221
+
+ ``/ 10
+ - 8491
+
+ ``/ 11
+ - 9207
+
+ ``/ 5
+ - 6038
+
+ ``/ 4
+ - 5597
+
+ ``/ 3
+ - 5490
+
+ ``/ 2
+ - 4957
+
+ Basic algorithm versin 2 (dumb chunk extraction):
+
+With chunk size = size squareroot size (23 chunks for 500 items) :
+
+ Without presorting chunk on B
+ - 7954
+
+ With presorting chunk on B
+ - 7965
+
+ chunk size = stack size / 2 (with presorting, Without)
+ - 4306, 5014
+
+  chunk size = stack size / 3 (with presorting, Without)
+ - 4481, 4700
+
+  chunk size = stack size / 4 (with presorting, Without)
+ - 4981, 4889
+
+chunk size = stack size / 5 (with presorting, Without)
+ - 4937, 5117
+
+chunk size = stack size / 6 (with presorting, Without)
+ - 4671, 4717
+
+chunk size = stack size / 7 (with presorting, Without)
+ - 4680, 4586
+
+chunk size = stack size / 8 (with presorting, Without)
+ - 5447, 5495
+
+ chunk size = stack size / 9 (with presorting, Without)
+ - 5442, 5419
+
+chunk size = stack size / 10 (with presorting, Without)
+ - 5647, 5675
+
+ chunk size = stack size / 11 (with presorting, Without)
+ - 5688, 5707
+
+ chunk size = stack size / 12 (with presorting, Without)
+ - 5790, 5814
+
+ chunk size = stack size / 14 (with presorting, Without)
+ - 6828, 6823
+
+ chunk size = stack size / 16 (with presorting, Without)
+ - 7365, 6907
