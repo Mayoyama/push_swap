@@ -6,12 +6,22 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/03 15:33:05 by thours            #+#    #+#             */
-/*   Updated: 2026/05/04 04:12:44 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/05 14:34:16 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+/*
+ *	How cost is calculated :
+ *	First initialize the median flag
+ *	After that, also initialize the target flag, as these will be used for
+ *	the cost calculation of both item and it target.
+ *	Then calculate de push cost with the function 'get_push_cost'.
+ *	Depending on it position on the stack (above or under the median), it
+ *	calculate how must operation is needed to put an item and his target
+ *	on top of the stack.
+*/
 void	calculate_cost(t_stack *stack, t_stack *target_stack)
 {
 	t_node	*current;
@@ -36,15 +46,15 @@ static int	get_cost(t_node *node)
 {
 	t_node	*current;
 	int		cost;
-	
+
 	current = node;
 	cost = 0;
 	if (node->above_med == 1)
 	{
 		while (current)
 		{
-		cost++;
-		current = current->prev;
+			cost++;
+			current = current->prev;
 		}
 	}
 	else
@@ -57,6 +67,16 @@ static int	get_cost(t_node *node)
 	}
 	return (cost);
 }
+
+/*
+ *	The target of an item is the item in the other stack, that have the
+ *	smallest value above the value of the item. This means that, in order
+ *	to be sorted, you should put the item of a stack just above it target
+ *	of the other stack.
+ *	This calculation is made by iterating through each item of the other
+ *	stack and calculating the difference of values, and stocking the one
+ *	with the lowest positive difference.
+*/
 t_node	*get_target(t_stack *stack, t_node *node)
 {
 	t_node	*target;
@@ -68,7 +88,8 @@ t_node	*get_target(t_stack *stack, t_node *node)
 	current = stack->list;
 	while (current)
 	{
-		if (current->value > node->value && current->value - node->value < best_diff)
+		if (current->value > node->value
+			&& current->value - node->value < best_diff)
 		{
 			target = current;
 			best_diff = current->value - node->value;
@@ -76,10 +97,18 @@ t_node	*get_target(t_stack *stack, t_node *node)
 		current = current->next;
 	}
 	if (!target)
-		return(find_smallest_value(stack->list));
+		return (find_smallest_value(stack->list));
 	return (target);
 }
 
+/*
+ *	Calculate how much operation it takes to put both item and
+ *	it target on top of their stacks.
+ *	If both are under the median, or both above, return wich
+ *	item cost the most to push, as 'rr' or 'rrr' double operations
+ *	can be used to moove theim both at the same time.
+ *	Else return the summ of their costs.
+*/
 int	get_push_cost(t_stack *target_stack, t_node *node)
 {
 	int		cost_node;
@@ -103,7 +132,7 @@ void	get_cheapest(t_node *list)
 {
 	t_node	*current;
 	t_node	*cheapest;
-	
+
 	current = list;
 	cheapest = list;
 	while (current)

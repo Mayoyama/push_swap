@@ -1,0 +1,5 @@
+[bench] disorder:    0.48%
+[bench] strategy:    Medium / O(n√n)
+[bench] total_ops:   4602
+[bench] sa:     0  sb:     0  ss:     0  pa:   500  pb:   500
+[bench] ra:  1079  rb:   373  rr:   337  rra:   736  rrb:   732  rrr:   345

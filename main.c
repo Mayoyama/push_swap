@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 17:19:58 by thours            #+#    #+#             */
-/*   Updated: 2026/05/04 14:16:33 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/06 11:33:56 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,16 @@ int	main(int argc, char **argv)
 		input = extract_user_input(argv);
 		if (input)
 		{
-			ft_printf("bench mod = %d\n", input->bench_mod);
-			ft_printf("mod = %d\n", input->mod);
-			ft_printf("list size = %d\n", input->size);
-			ft_printf("disorder = ");
-			ft_putdouble_fd(input->disorder, 1, 2);
-			ft_printf("\nstarting medium algorithm:\n\n");
-			do_medium_algo(input);
+			if (input->mod == SIMPLE)
+				do_simple_algo(input);
+			else if (input->mod == MEDIUM)
+				do_medium_algo(input);
+			else if (input->mod == COMPLEX)
+				ft_printf("No complex algorithm implemented.\n");
+			else if (input->mod == ADAPTATIVE || input->mod == NONE)
+				ft_printf("No adaptative algorithm implemented\n");
+			if (input->bench_mod)
+				benchmark_mode(input);
 		}
 		else
 			write(2, "error\n", 6);

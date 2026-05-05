@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 10:31:17 by thours            #+#    #+#             */
-/*   Updated: 2026/05/03 16:23:02 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/05 14:40:27 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_input	*extract_user_input(char **argv)
 			get_parameter(input, argv[i]);
 		if (is_valid_int(argv[i]))
 			get_num_list(input, argv[i]);
-	i++;
+		i++;
 	}
 	if (!input->list)
 		return (free(input), NULL);
@@ -63,7 +63,7 @@ void	get_num_list(t_input *input, char *str)
 {
 	int	i;
 	int	malloc_error;
-	
+
 	i = 0;
 	malloc_error = 0;
 	while (str[i])
@@ -85,8 +85,9 @@ void	get_num_list(t_input *input, char *str)
 }
 
 /*
- *	Iterate through the list, and for each node, a helper varaible "looper" iterate
- *	through the rest of the list to check if another node has the same value
+ *	Iterate through the list, and for each node, a helper varaible "looper"
+ *	iterate through the rest of the list to check if another node has
+ *	the same value
 */
 int	check_for_duplicate(t_node *head)
 {

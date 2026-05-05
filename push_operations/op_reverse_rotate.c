@@ -24,7 +24,8 @@ void	rra(t_input *input, t_stack *a)
 	{
 		input->op_counts->rra++;
 		input->op_counts->total_ops++;
-		write(1, "rra\n", 4);
+		if (!input->bench_mod)
+			write(1, "rra\n", 4);
 	}
 	else
 		write(2, "rra failed\n", 11); // remove after debugging
@@ -36,7 +37,8 @@ void	rrb(t_input *input, t_stack *b)
 	{
 		input->op_counts->rrb++;
 		input->op_counts->total_ops++;
-		write(1, "rrb\n", 4);
+		if (!input->bench_mod)
+			write(1, "rrb\n", 4);
 	}
 	else
 		write(2, "rrb failed\n", 11); // remove after debugging
@@ -53,7 +55,8 @@ void	rrr(t_input *input, t_stack *a, t_stack *b)
 	{
 		input->op_counts->rrr++;
 		input->op_counts->total_ops++;
-		write(1, "rrr\n", 4);
+		if (!input->bench_mod)
+			write(1, "rrr\n", 4);
 	}
 	if (!res_a)
 		write(2, "rrr:a failed\n", 13); // remove after debugging
