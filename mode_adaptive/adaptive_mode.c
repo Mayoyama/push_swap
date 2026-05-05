@@ -7,7 +7,7 @@ void	adaptive_modeset(t_input *input, t_stack *a, t_stack *b)
 	if (input->disorder < 0.2)
 		do_simple_algo(input)
 	else if (input->disorder < 0.5)
-		//INSERT: Mid disorder mode function here
+		do_medium_algo(input);
 	else 
 		start_complex_mode(input);
 }
