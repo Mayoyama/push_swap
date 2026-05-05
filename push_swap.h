@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
+/*   By: speterse <speterse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 15:58:26 by thours            #+#    #+#             */
-/*   Updated: 2026/05/05 14:44:26 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/05 18:41:32 by speterse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,21 +110,6 @@ void		get_index(t_node *list);
 double		compute_disorder(t_node *lst);
 
 /* ************************************************************************** */
-/* *********************			MODES			************************* */
-/* ************************************************************************** */
-
-void		adaptive_modeset(t_input *input, t_stack *a, t_stack *b);
-
-void		start_complex_mode(t_input *input);
-void		set_radix_index(t_node *head);
-int			get_max_bitsize(int size);
-void		radix(t_input *input, t_stack *a, t_stack *b);
-void		mem_cleanup(t_input *input, t_stack *a, t_stack *b);
-int			is_sorted(t_stack *a);
-
-void		benchmark_mode(t_input *input);
-
-/* ************************************************************************** */
 /* *********************	  PUSH OPERATIONS		************************* */
 /* ************************************************************************** */
 
@@ -210,5 +195,23 @@ void		put_on_top_b(t_node *node, t_stack *b, t_input *inp);
 int			get_chunk_size(t_stack *stack);
 int			get_chunk_count(int chunk_size, t_stack *stack);
 t_node		*find_node_index(t_node *list, int index);
+
+/* ************************************************************************** */
+/* *********************		COMPLEX MODE		************************* */
+/* ************************************************************************** */
+
+void		do_complex_algo(t_input *input);
+void		set_radix_index(t_node *head);
+int			get_max_bitsize(int size);
+void		radix(t_input *input, t_stack *a, t_stack *b);
+void		mem_cleanup(t_input *input, t_stack *a, t_stack *b);
+int			is_sorted(t_stack *a);
+
+/* ************************************************************************** */
+/* *********************		OTHER MODES			************************* */
+/* ************************************************************************** */
+
+void		adaptive_modeset(t_input *input);
+void		benchmark_mode(t_input *input);
 
 #endif

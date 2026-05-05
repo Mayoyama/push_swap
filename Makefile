@@ -1,30 +1,30 @@
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 SRCS = 	main.c \
+		algo_helpers/stack_struct_functions.c \
+		algo_helpers/get_above_med.c \
+		algo_helpers/cost_calculation.c \
+		algo_helpers/utils.c \
+		algo_helpers/ft_putdouble_fd.c \
+		benchmark/benchmark.c \
 		input_parser/check_input.c \
 		input_parser/parser_utils.c \
 		input_parser/input_struct_functions.c \
 		input_parser/num_struct_functions.c \
 		input_parser/extract_input.c \
-		push_operations/op_push.c \
-		push_operations/op_reverse_rotate.c \
-		push_operations/op_rotate.c \
-		push_operations/op_swap.c \
 		mode_adaptive/disorder_checker.c \
-		helpers/ft_putdouble_fd.c \
-		benchmark/benchmark.c \
+		mode_adaptive/adaptive_mode.c \
 		mode_complex/complex_mode.c \
-		algo_helpers/stack_struct_functions.c \
-		algo_helpers/get_above_med.c \
-		algo_helpers/cost_calculation.c \
-		algo_helpers/utils.c \
-		mode_simple/simple_mode.c \
+		mode_complex/complex_mode_helpers.c \
 		mode_medium/medium_mode.c \
 		mode_medium/utils.c \
 		mode_medium/handle_chunks.c \
-		mode_medium/chunk_reinsertion.c
-# missing files :
-# mode_adaptive/adaptive_mode.c
+		mode_medium/chunk_reinsertion.c \
+		mode_simple/simple_mode.c \
+		push_operations/op_push.c \
+		push_operations/op_reverse_rotate.c \
+		push_operations/op_rotate.c \
+		push_operations/op_swap.c
 
 LIBFT = libft/libft.a
 OBJS = $(SRCS:.c=.o)

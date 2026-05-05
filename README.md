@@ -1,3 +1,21 @@
+TO BE COMPLETED: NB: Links are broken, sorry!
+- [# Other?](other?) needed?
+- Line 94: Update medium mode name
+- [Simple Algorithm — Selection Sort Adaptation O(n²)](simple-algorithm---selection-sort-adaptation-$o(n^2)$) - Proofreading and update limitations
+- [# (Medium)]((medium)) - Update with your medium algorithm information
+- [RADIX STUFF](LSD-radix)
+- [# Considerations: Regarding the Disorder Metric](considerations:-regarding-the-disorder-metric) Update medium name
+- [# Documentation & References](documentation-&-References): update
+- Final formatting check to ensure consistency
+- Consider adding a few subsections to the TOC for longer sections
+
+~~~
+You must document in your repository (e.g., README.md) the rationale for your
+thresholds, the internal techniques used in each regime, and a brief complexity
+argument (upper bounds) for time and space within the Push_swap model.
+~~~
+
+
 *This project has been created as part of the 42 curriculum by thours[, speterse[...]].*
 
 # push_swap
@@ -54,10 +72,11 @@ This will generate the program:
 	- Stack `a` contains a random amount of negative and/or positive numbers without any duplicate(s).
 	- Stack `b` is empty.
 - The goal is to sort in ascending order numbers into stack `a`.
+- The stack must be sorted using *at least* 3 separate sorting algorithms of varying complexities ($O(n^2)$, $O(n\sqrt{n})$ and $O(n \log n)$). For a more detailed explanation of each algorithm, see [Technical Choices](#technical-choices).
 
 ### Available Operations
 
-The following operations were made available:
+The following operations were made available to sort the stack:
 
 | Instruction | Description |
 | :--- | :--- |
@@ -84,33 +103,18 @@ The following operations were made available:
 ### Sort Algorithms
 
 The following algorithms were implemented in this program:
+- Selection Sort Adaptation $O(n^2)$ 
+- CHUNK? $O(n\sqrt{n})$
+- LSD Radix Adaptation $O(n \log n)$
 
-#### Simple Algorithm — Selection Sort Adaptation O(n²)
-
-The simple algorithm is a selection sort adaptation. At each iteration, it finds the smallest remaining value in stack A and moves it to the top of stack B, repeating until only the maximum value remains in A. Once B contains all other values in descending order, every element is pushed back to A, reconstructing the stack in ascending order.
-
-#### How extraction works
-To move the smallest node to the top of A, the algorithm checks whether the node is above or below the median of the stack:
-- **Above the median** -> series of `ra` (rotate) operations to bring it up from the top
-- **Below the median** -> series of `rra` (reverse rotate) operations to bring it up from the bottom
-
-This avoids always rotating in the same direction, halving the worst-case rotation cost per extraction.
-
-#### Limitations
-
-This strategy is efficient for small inputs but degrades quickly as `n` grows — each extraction can require up to `n/2` rotations, and there are `n` extractions. For inputs above ~20 elements, the medium or complex strategy will always outperform it.
-
-1. a
-1. a
-1. a
 
 ### Optional Strategy Selector
 
 The following flags can be used on the command prompt at time of execution.
-- -- simple Forces the use of your O(n2) algorithm.
-- --medium Forces the use of your O(n√n) algorithm.
-- --complex Forces the use of your O(n log n) algorithm.
-- --adaptive Forces the use of your adaptive algorithm based on disorder.
+- -- simple Forces the use of the $O(n^2)$ algorithm.
+- --medium Forces the use of the $O(n\sqrt{n})$ algorithm.
+- --complex Forces the use of the $O(n \log n)$ algorithm.
+- --adaptive Forces the use of the adaptive algorithm based on disorder.
 
 **Adaptive is the default behavior if no selector is given.**
 
@@ -124,31 +128,23 @@ The optional benchmark mode (--bench) displays, after sorting:
 
 The benchmark output is sent to stderr and only appears when the flag is present.
 
-#### Example Screenshots
-
-Run with benchmark enabled; hide operations and show only metrics:
-![Run with benchmark enabled; hide operations and show only metrics](https://i.imgur.com/PlJJeqz.png)
-
-Pipe operations to the checker while saving benchmark to a file:
-![Pipe operations to the checker while saving benchmark to a file](https://i.imgur.com/pdj3RJh.png)
-
 [Back to top](#table-of-contents)
 
 ## Usage Examples
 
 Below are some examples of command prompt inputs that can be used to alter the behaviour of the program:
 
-Default selection (--adaptive) and operation count:
+Default selection (--adaptive):
 ~~~
-$> ARG="4 67 3 87 23"; ./push_swap --adaptive $ARG | wc -l
+$> ARG="4 67 3 87 23"; ./push_swap --adaptive $ARG
 ~~~
 
-Force the simple (O(nˆ2)) strategy:
+Force the simple $O(n^2)$ strategy:
 ~~~
 $> ./push_swap --simple 5 4 3 2 1
 ~~~
 
-Force the complex (O(n log n)) strategy and verify with the checker:
+Force the complex $O(n \log n)$ strategy and verify with the checker:
 ~~~ 
 $> ARG="4 67 3 87 23"; ./push_swap --complex $ARG | ./checker_linux $ARG 
 OK
@@ -156,7 +152,7 @@ OK
 
 Push_swap with a large input:
 ~~~
-$> shuf -i 0-9999 -n 500 > args.txt ; ./push_swap $(cat args.txt) | wc -l
+$> shuf -i 0-9999 -n 500 > args.txt ; ./push_swap $(cat args.txt)
 6784
 ~~~
 
@@ -172,23 +168,37 @@ Error
 
 ## Technical Choices
 
-### Decision Behind Sorting Algorithms Choices
+### Decisions Behind Sorting Algorithms Choices
 
-Decisions were based on the following targets.
+Decisions were based on the following targets:
 
-For 100 random numbers, your program should use:
-- Less than 2000 operations to pass (minimum requirement)
-- Less than 1500 operations for good performance
-- Less than 700 operations for excellent performance
+1. For 100 random numbers, your program should use:
+	- Less than 2000 operations to pass (minimum requirement)
+	- Less than 1500 operations for good performance
+	- Less than 700 operations for excellent performance
+2. For 500 random numbers, your program should use:
+	- Less than 12000 operations to pass (minimum requirement)
+	- Less than 8000 operations for good performance
+	- Less than 5500 operations for excellent performance
 
-For 500 random numbers, your program should use:
-- Less than 12000 operations to pass (minimum requirement)
-- Less than 8000 operations for good performance
-- Less than 5500 operations for excellent performance
+#### Simple Algorithm — Selection Sort Adaptation $O(n^2)$
 
-#### (Basic)
+The simple algorithm is a selection sort adaptation. At each iteration, it finds the smallest remaining value in stack `a` and moves it to the top of stack `b`, repeating until only the maximum value remains in `a`. Once `b` contains all other values in descending order, every element is pushed back to `a`, reconstructing the stack in ascending order.
 
-> text explaining which algorithm we chose and why
+##### How extraction works
+To move the smallest node to the top of `a`, the algorithm checks whether the node is above or below the median of the stack:
+- **Above the median** -> series of `ra` (rotate) operations to bring it up from the top
+- **Below the median** -> series of `rra` (reverse rotate) operations to bring it up from the bottom
+
+This avoids always rotating in the same direction, halving the worst-case rotation cost per extraction.
+
+##### Limitations
+
+This strategy is efficient for small inputs but degrades quickly as `n` grows — each extraction can require up to `n/2` rotations, and there are `n` extractions. For inputs above ~20 elements, the medium or complex strategy will always outperform it.
+
+1. a
+1. a
+1. a
 
 #### (Medium)
 
@@ -196,30 +206,17 @@ For 500 random numbers, your program should use:
 
 #### LSD radix + Turk optimisation layer
 
-At first, a Mechanical Turk style sorting algorithm was considered, as it potentially can have quite good results according to the research. However, after evaluating it's complexity, it was found to not comply with the (O(n log n)) specification (at worst it is (O(n2)).
+At first, a Mechanical Turk style sorting algorithm was considered, as it potentially can have quite good results according to the research. However, after evaluating it's complexity, it was found to not comply with the $O(n \log n)$ specification (at worst it is ($O(n^2)$).
 
 However, I decided to use Mechanical Turk optimisations of a LSD Radix method, in order to lower push_swap operations
 
+### Considerations: Regarding the Disorder Metric
 
+The program evaluates the **disorder** of Stack A—a value between 0 and 1 representing how far the stack is from being sorted (0 being perfectly sorted, 1 being the worst possible order). When operating under the `--adaptive` flag, the following regimes are applied to stay within optimal operation counts:
 
-
-
-### Considerations Regarding the Disorder Metric
-
-Disorder is a number between 0 and 1 that tells how far the initial stack a is from being sorted. If the numbers are already in the right order, the disorder is 0. If they are in the worst
-possible order, the disorder is 1.
-
-When operating under the --adaptive flag, the following complexity targets per regime will be applied.
-
-- Low disorder: if disorder < 0.2, the XXX sort method will be applied (in O(n2) time).
-- Medium disorder: if 0.2 ≤ disorder < 0.5, the XXX sort method will be applied (in O(n√n) time).
-- High disorder: if disorder ≥ 0.5, the XXX sort method will be applied (in O(n log n) time)
-
-~~~
-You must document in your repository (e.g., README.md) the rationale for your
-thresholds, the internal techniques used in each regime, and a brief complexity
-argument (upper bounds) for time and space within the Push_swap model.
-~~~
+*   **Low Disorder (Disorder < 0.2):** Applies an **$O(n^2)$ sort method** (Selection Sort Adaptation). This regime is optimized for nearly sorted stacks where simple swaps and rotations are more efficient than complex partitioning.
+*   **Medium Disorder (0.2 ≤ Disorder < 0.5):** Applies an **$O(n\sqrt{n})$ sort method** (NAME OF MID). This provides a balanced middle ground to handle moderate entropy without the full overhead of bitwise sorting.
+*   **High Disorder (Disorder ≥ 0.5):** Applies an **$O(n \log n)$ sort method** (Radix Sort). This ensures that even the most chaotic datasets are sorted within the strict operation limits of the push_swap model.
 
 [Back to top](#table-of-contents)
 
@@ -236,9 +233,8 @@ argument (upper bounds) for time and space within the Push_swap model.
 
 AI tools were used selectively during the development of this project for:
 
-- a
-- a
-- a
+- Verifying understanding of concepts related to the project, such as bit shifting, differences between sorting algorithms in relation to BigO category requirements of the project, etc.
+- Edge case testing and data sets: AI was used to generate large data sets (500 elements) with varying disorder to stress test the code and confirm that acceptable total numbers of push operation results were being achieved. INT_MIN and INT_MAX were also included in these stress tests.
 
 AI was not used to generate final implementations directly. All logic and code structure for this project are of our own making.
 
@@ -249,19 +245,25 @@ AI was not used to generate final implementations directly. All logic and code s
 The following sections were contributed by *thours*.
 
 - Makefile
+- Main.c
 - push_swap.h
 - Input parser (check, extract, get_index, etc)
+- Algo Helpers
 - Libft
-- Low disorder mode (O(n2))
-- Medium disorder mode (O(n√n))
+- Low disorder mode ($O(n^2)$)
+- Medium disorder mode ($O(n\sqrt{n})$)
+- Benchmark mode (debugging and final implementation)
 
 The following sections were contributed by *speterse*.
 
-- README.md
+- README
 - Disorder checker
 - Adaptive mode
-- Benchmark mode
+- Benchmark mode (inital design)
+- ft_putdouble_fd
 - Push operations (pa, pb, ra, rb, etc)
-- High disorder (O(n log n)) 
+- High disorder ($O(n \log n)$) 
+
+We also collaborated together and held regular discussions relating to our progress and implementations of our relevant tasks. We decided upfront mostly which sections would be handled by whom, with each of us picking up additional tasks the project progressed.
 
 [Back to top](#table-of-contents)

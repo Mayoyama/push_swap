@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   op_push.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: speterse <speterse@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/05 18:43:39 by speterse          #+#    #+#             */
+/*   Updated: 2026/05/05 18:45:19 by speterse         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 int	push_to_dest(t_stack *dest, t_stack *src)
@@ -26,24 +38,17 @@ int	push_to_dest(t_stack *dest, t_stack *src)
 
 void	pa(t_input *input, t_stack *a, t_stack *b)
 {
-	if (push_to_dest(a, b))
-	{
-		input->op_counts->pa++;
-		input->op_counts->total_ops++;
-		write(1, "pa\n", 3);
-	}
-	else
-		write(2, "pa failed\n", 10); // remove after debugging
+	push_to_dest(a, b);
+	input->op_counts->pa++;
+	input->op_counts->total_ops++;
+	write(1, "pa\n", 3);
 }
 
 void	pb(t_input *input, t_stack *a, t_stack *b)
 {
-	if (push_to_dest(b, a))
-	{
-		input->op_counts->pb++;
-		input->op_counts->total_ops++;
-		write(1, "pb\n", 3);
-	}
-	else
-		write(2, "pb failed\n", 10); // remove after debugging
+	push_to_dest(b, a);
+	input->op_counts->pb++;
+	input->op_counts->total_ops++;
+	write(1, "pb\n", 3);
+	
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   op_reverse_rotate.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: speterse <speterse@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/05 18:44:55 by speterse          #+#    #+#             */
+/*   Updated: 2026/05/05 18:46:34 by speterse         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 int	rev_rotate_list(t_stack *stack)
@@ -20,43 +32,25 @@ int	rev_rotate_list(t_stack *stack)
 
 void	rra(t_input *input, t_stack *a)
 {
-	if (rev_rotate_list(a))
-	{
-		input->op_counts->rra++;
-		input->op_counts->total_ops++;
-		write(1, "rra\n", 4);
-	}
-	else
-		write(2, "rra failed\n", 11); // remove after debugging
+	rev_rotate_list(a);
+	input->op_counts->rra++;
+	input->op_counts->total_ops++;
+	write(1, "rra\n", 4);
 }
 
 void	rrb(t_input *input, t_stack *b)
 {
-	if (rev_rotate_list(b))
-	{
-		input->op_counts->rrb++;
-		input->op_counts->total_ops++;
-		write(1, "rrb\n", 4);
-	}
-	else
-		write(2, "rrb failed\n", 11); // remove after debugging
+	rev_rotate_list(b);
+	input->op_counts->rrb++;
+	input->op_counts->total_ops++;
+	write(1, "rrb\n", 4);
 }
 
 void	rrr(t_input *input, t_stack *a, t_stack *b)
 {
-	int res_a;
-	int res_b;
-
-	res_a = rev_rotate_list(a);
-	res_b = rev_rotate_list(b);
-	if (res_a && res_b)
-	{
-		input->op_counts->rrr++;
-		input->op_counts->total_ops++;
-		write(1, "rrr\n", 4);
-	}
-	if (!res_a)
-		write(2, "rrr:a failed\n", 13); // remove after debugging
-	if (!res_b)
-		write(2, "rrr:b failed\n", 13); // remove after debugging
+	rev_rotate_list(a);
+	rev_rotate_list(b);
+	input->op_counts->rrr++;
+	input->op_counts->total_ops++;
+	write(1, "rrr\n", 4);
 }

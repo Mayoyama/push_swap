@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   disorder_checker.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: speterse <speterse@student.42belgium.      +#+  +:+       +#+        */
+/*   By: speterse <speterse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 23:28:26 by speterse          #+#    #+#             */
-/*   Updated: 2026/04/30 00:56:26 by speterse         ###   ########.fr       */
+/*   Updated: 2026/05/05 18:15:19 by speterse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ double	compute_disorder(t_node *lst)
 		while (j)
 		{
 			pairs++;
-			
 			if (i->value > j->value)
 				mistakes++;
 			j = j->next;
@@ -39,5 +38,5 @@ double	compute_disorder(t_node *lst)
 	}
 	if (pairs == 0)
 		return (0.0);
-	return ((double) mistakes/pairs);
+	return ((double) mistakes / pairs);
 }

@@ -6,7 +6,7 @@
 /*   By: speterse <speterse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 17:19:58 by thours            #+#    #+#             */
-/*   Updated: 2026/05/05 17:04:40 by speterse         ###   ########.fr       */
+/*   Updated: 2026/05/05 18:42:31 by speterse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int	main(int argc, char **argv)
 			else if (input->mod == MEDIUM)
 				do_medium_algo(input);
 			else if (input->mod == COMPLEX)
-				ft_printf("No complex algorithm implemented.\n");
+				do_complex_algo(input);
 			else if (input->mod == ADAPTATIVE || input->mod == NONE)
-				ft_printf("No adaptative algorithm implemented\n");
+				adaptive_modeset(input);
 		}
 		else
 			write(2, "error\n", 6);
