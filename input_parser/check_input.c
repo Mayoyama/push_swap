@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 18:46:11 by thours            #+#    #+#             */
-/*   Updated: 2026/05/02 14:56:21 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/05 14:39:38 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	check_input(int argc, char **argv)
 {
 	int	i;
+
 	if (argc > 1)
 	{
 		i = 1;
@@ -74,12 +75,12 @@ int	is_valid_list(char *str)
  *					long (between 3 000 000 000 and -3 000 000 000))
  *				-> If it fits in a long but is above INT_MAX or under INT_MIN
 */
-static long extract_num(char *nptr, int sign, int *error)
+static long	extract_num(char *nptr, int sign, int *error)
 {
 	int		char_count;
 	long	res;
 	int		i;
-	
+
 	i = 0;
 	char_count = 0;
 	res = 0;
@@ -105,7 +106,6 @@ long	ft_atoi_long(char *nptr, int *error)
 {
 	long	res;
 	int		sign;
-
 	int		i;
 
 	i = 0;
@@ -129,7 +129,7 @@ int	is_valid_int(char *str)
 {
 	int	error;
 	int	i;
-	
+
 	error = 0;
 	i = 0;
 	while (ft_isspace(str[i]))

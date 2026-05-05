@@ -6,12 +6,26 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 15:39:20 by thours            #+#    #+#             */
-/*   Updated: 2026/05/04 22:28:40 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/05 14:44:57 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+/*
+ *	How the chunk reinsertion works :
+ *	Before any reinsertion, calculate the cost of pushing each item from B
+ *	next to their respective target on A (the item in A with the smallest value
+ *	above the chunk item value in B). This calculation (you can find the
+ *	fonction in algo_helpers/cost_calculation.c) is done by taking the place
+ *	of both item in their respecting stack, and if the item is above the median
+ *	or not. if both items are on the same side of the stack, takes in account
+ *	that double operation like 'rr' and 'rrr' can be done to moove theim both
+ *	in one operation.
+ *	The median and cost related flags being stocked on the structure of an item,
+ *	flags must be cleared with the function 'reset_cost_flags' after each
+ *	reinsertion.
+*/
 void	handle_chunk_reinsertion(t_stack *a, t_stack *b, t_input *input)
 {
 	put_on_top_b(find_node_index(b->list, input->size - 1), b, input);
@@ -26,6 +40,12 @@ void	handle_chunk_reinsertion(t_stack *a, t_stack *b, t_input *input)
 	}
 }
 
+/*
+ *	This reinsertion method (target based) takes in account that
+ *	depending on the place of both items in their stack, rr or rrr operation
+ *	can be done to moove theim simutaneously, by using the function
+ *	'put_on_top_double'.
+*/
 void	reinsert_chunk_node(t_stack *a, t_stack *b, t_input *input)
 {
 	t_node	*node;
@@ -35,11 +55,11 @@ void	reinsert_chunk_node(t_stack *a, t_stack *b, t_input *input)
 	while (node && node->cheapest != 1)
 		node = node->next;
 	target = node->target;
-	put_on_top_double(target, node, a, input);
+	put_on_top_dbl(target, node, a, input);
 	pa(input, a, b);
 }
 
-void	put_on_top_double(t_node *tar, t_node *node, t_stack *a, t_input *inp)
+void	put_on_top_dbl(t_node *tar, t_node *node, t_stack *a, t_input *inp)
 {
 	t_stack	*b;
 
