@@ -30,8 +30,7 @@ void	pa(t_input *input, t_stack *a, t_stack *b)
 	{
 		input->op_counts->pa++;
 		input->op_counts->total_ops++;
-		if (!input->bench_mod)
-			write(1, "pa\n", 3);
+		write(1, "pa\n", 3);
 	}
 	else
 		write(2, "pa failed\n", 10); // remove after debugging
@@ -43,8 +42,7 @@ void	pb(t_input *input, t_stack *a, t_stack *b)
 	{
 		input->op_counts->pb++;
 		input->op_counts->total_ops++;
-		if (!input->bench_mod)
-			write(1, "pb\n", 3);
+		write(1, "pb\n", 3);
 	}
 	else
 		write(2, "pb failed\n", 10); // remove after debugging
