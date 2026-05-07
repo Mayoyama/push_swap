@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 04:38:10 by thours            #+#    #+#             */
-/*   Updated: 2026/05/05 12:46:41 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/07 11:08:18 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,25 @@ void	do_medium_algo(t_input *input)
 	t_stack	*stack_b;
 
 	stack_a = create_stack_struct(input);
-	stack_b = create_stack_struct(NULL);
-	stack_a->twin_stack = stack_b;
-	stack_b->twin_stack = stack_a;
-	if (!stack_a || !stack_b)
+	if (!stack_a)
 	{
-		write (2, "error\n", 6);
+		write(2, "error\n", 6);
+		free_input(input);
 		return ;
 	}
+	stack_b = create_stack_struct(NULL);
+	if (!stack_b)
+	{
+		write (2, "error\n", 6);;
+		free_input(input);
+		free(stack_a);
+		return ;
+	}
+	stack_a->twin_stack = stack_b;
+	stack_b->twin_stack = stack_a;
 	run_medium_algo(input, stack_a);
+	free(stack_a);
+	free(stack_b);
 }
 
 void	run_medium_algo(t_input *input, t_stack *a)
@@ -47,11 +57,6 @@ void	run_medium_algo(t_input *input, t_stack *a)
 	run_phase_one(input, a);
 	handle_chunk_reinsertion(a, a->twin_stack, input);
 	put_on_top_a(find_smallest_value(a->list), a, input);
-	if (algorithm_has_end(a, a->twin_stack))
-		ft_printf("medium mode finished\n");
-	ft_printf("Disorder = ");
-	ft_putdouble_fd(input->disorder * 100, 1, 2);
-	ft_printf("%%\nTotal count of operations = %d\n", input->op_counts->total_ops);//////////////
 }
 
 void	run_phase_one(t_input *input, t_stack *a)

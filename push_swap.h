@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: speterse <speterse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 15:58:26 by thours            #+#    #+#             */
-/*   Updated: 2026/05/05 18:41:32 by speterse         ###   ########.fr       */
+/*   Updated: 2026/05/07 13:34:04 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,15 @@ int			ft_max(int a, int b);
 void		reset_cost_flags(t_node *list);
 
 /* ************************************************************************** */
-/* *********************		SIMPLE ALGORITHM		********************* */
+/* *********************		SMALL LIST		***************************** */
+/* ************************************************************************** */
+
+void		handle_small_list(t_input *input);
+void		sort_3(t_input *input, t_stack *stack);
+void	sort_4_to_9(t_input *input, t_stack *a, t_stack *b);
+
+/* ************************************************************************** */
+/* *********************		SIMPLE MODE		***************************** */
 /* ************************************************************************** */
 
 void		do_simple_algo(t_input *input);
@@ -170,7 +178,7 @@ void		run_simple_algo(t_input *input, t_stack *a, t_stack *b);
 void		push_to_b(t_input *input, t_stack *a, t_stack *b, t_node *node);
 
 /* ************************************************************************** */
-/* *********************		MEDIUM ALGORITHM		********************* */
+/* *********************		MEDIUM MODE		***************************** */
 /* ************************************************************************** */
 
 /**** MEDIUM MODE ****/
@@ -204,7 +212,6 @@ void		do_complex_algo(t_input *input);
 void		set_radix_index(t_node *head);
 int			get_max_bitsize(int size);
 void		radix(t_input *input, t_stack *a, t_stack *b);
-void		mem_cleanup(t_input *input, t_stack *a, t_stack *b);
 int			is_sorted(t_stack *a);
 
 /* ************************************************************************** */

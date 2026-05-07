@@ -3,22 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   complex_mode_helpers.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: speterse <speterse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 17:10:16 by speterse          #+#    #+#             */
-/*   Updated: 2026/05/05 20:02:07 by speterse         ###   ########.fr       */
+/*   Updated: 2026/05/07 10:40:15 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-void	mem_cleanup(t_input *input, t_stack *a, t_stack *b)
-{
-	free_stack(a->list);
-	free(a);
-	free(b);
-	free(input);
-}
 
 int	is_sorted(t_stack *a)
 {

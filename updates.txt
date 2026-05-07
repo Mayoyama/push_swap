@@ -1,0 +1,7 @@
+- Removing debubbging prints a bit everywhere
+
+- correcting some behavior with the adaptative mode and the bench mode when not forcing any strategy
+
+- Memory leak fixed (was freeing from input->list when this does not point to the first element of the list anymore after running)
+
+- Adding "hardcoded" sort for list size = 2 or 3, using it also between size of 4 to 9

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simple_mode.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: speterse <speterse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 21:37:33 by thours            #+#    #+#             */
-/*   Updated: 2026/05/05 19:53:20 by speterse         ###   ########.fr       */
+/*   Updated: 2026/05/07 11:09:19 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,25 @@ void	do_simple_algo(t_input *input)
 	t_stack	*stack_b;
 
 	stack_a = create_stack_struct(input);
-	stack_b = create_stack_struct(NULL);
-	if (!stack_a || !stack_b)
+	if (!stack_a)
 	{
-		write (2, "error\n", 6);
+		write(2, "error\n", 6);
+		free_input(input);
 		return ;
 	}
+	stack_b = create_stack_struct(NULL);
+	if (!stack_b)
+	{
+		write (2, "error\n", 6);;
+		free_input(input);
+		free(stack_a);
+		return ;
+	}
+	stack_a->twin_stack = stack_b;
+	stack_b->twin_stack = stack_a;
 	run_simple_algo(input, stack_a, stack_b);
-	free_stack(stack_a->list);
 	free(stack_a);
 	free(stack_b);
-	free(input);
 }
 
 /*

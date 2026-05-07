@@ -33,8 +33,7 @@ static void bench_linetwo_opcounts(t_input *input)
 
 static void	bench_print_strategy(t_input *input)
 {
-	//Need to make sure input->disorder is already calculated
-	if (input->mod == ADAPTATIVE)
+	if (input->mod == ADAPTATIVE || input->mod == NONE)
 	{
 		if (input->disorder < 0.2)
 			ft_putstr_fd("Adaptive / O(n2)\n", 2);
@@ -55,7 +54,7 @@ void	benchmark_mode(t_input *input)
 {
 	//Disorder
 	ft_putstr_fd("[bench] disorder:    ", 2);
-	ft_putdouble_fd(input->disorder, 2, 2);
+	ft_putdouble_fd(input->disorder * 100, 2, 2);
 	ft_putstr_fd("%\n", 2);
 	//Strategy
 	ft_putstr_fd("[bench] strategy:    ", 2);

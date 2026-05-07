@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 09:45:50 by thours            #+#    #+#             */
-/*   Updated: 2026/05/05 14:37:18 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/07 10:53:14 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void	free_stack(t_node *head)
 	if (!head)
 		return ;
 	current = head;
+	while (current->prev)
+		current = current->prev;
 	while (current)
 	{
 		next = current->next;

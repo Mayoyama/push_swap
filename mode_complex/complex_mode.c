@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   complex_mode.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: speterse <speterse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 17:10:24 by speterse          #+#    #+#             */
-/*   Updated: 2026/05/05 19:58:25 by speterse         ###   ########.fr       */
+/*   Updated: 2026/05/07 10:46:49 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,9 @@ void	do_complex_algo(t_input *input)
 		set_radix_index(stack_a->list);
 		radix(input, stack_a, stack_b);
 	}
-	///////////////////////////////////////////// DEBUGING
-	ft_printf("\n");
-	print_stack(stack_a->list);
-	ft_printf("Total of operations: %d\n", \
-	input->op_counts->total_ops);
-	/////////////////////////////////////////////*/
-	mem_cleanup(input, stack_a, stack_b);
+	free(stack_a);
+	free(stack_b);
 }
-/*	///////////////////////////////////////////// DEBUGING
-	ft_printf("\n");
-	print_stack(stack_a->list);
-	ft_printf("Total of operations: %d\n", \
-	input->op_counts->total_ops);
-	/////////////////////////////////////////////*/
 
 //input → stack A → (radix distribution) → stack B → 
 // (Turk reconstruction) → sorted A

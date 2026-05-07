@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -fsanitize=address
 SRCS = 	main.c \
 		algo_helpers/stack_struct_functions.c \
 		algo_helpers/get_above_med.c \
@@ -21,6 +21,7 @@ SRCS = 	main.c \
 		mode_medium/handle_chunks.c \
 		mode_medium/chunk_reinsertion.c \
 		mode_simple/simple_mode.c \
+		small_list/handle_small_list.c \
 		push_operations/op_push.c \
 		push_operations/op_reverse_rotate.c \
 		push_operations/op_rotate.c \
@@ -52,5 +53,5 @@ fclean: clean
 re: fclean all
 
 valgrind: $(NAME)
-	valgrind --leak-check=FULL --show-link-kinds=all ./$(NAME)
+	valgrind ./$(NAME)
 .PHONY: all clean fclean re valgrind
