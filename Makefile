@@ -27,10 +27,12 @@ SRCS = 	main.c \
 		push_operations/op_reverse_rotate.c \
 		push_operations/op_rotate.c \
 		push_operations/op_swap.c
-
+SRCS_BONUS =	bonus_checker/main_checker.c
 LIBFT = libft/libft.a
 OBJS = $(SRCS:.c=.o)
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 NAME = push_swap
+NAME_BONUS = checker
 
 all: $(NAME)
 
@@ -45,14 +47,26 @@ $(LIBFT):
 
 clean:
 	rm -f $(OBJS)
+	rm -f $(OBJS_BONUS)
 	$(MAKE) -C libft clean
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f $(NAME_BONUS)
 	$(MAKE) -C libft fclean
 
 re: fclean all
 
 valgrind: $(NAME)
 	valgrind ./$(NAME)
+
+bonus: $(NAME_BONUS)
+
+$(NAME_BONUS): $(LIBFT) $(OBJS_BONUS)
+	$(MAKE) all
+	$(CC) $(CFLAGS) -o $@ $^ -Llibft -lft
+
+$(OBJS_BONUS): %.o:%.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
 .PHONY: all clean fclean re valgrind
