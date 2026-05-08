@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/07 11:06:47 by thours            #+#    #+#             */
-/*   Updated: 2026/05/07 13:34:02 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/08 10:59:10 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	handle_small_list(t_input *input)
 	stack_a->twin_stack = stack_b;
 	stack_b->twin_stack = stack_a;
 	dispatch(input, stack_a, stack_b);
-	print_stack(stack_a->list);
 	free(stack_a);
 	free(stack_b);
 }
@@ -84,7 +83,7 @@ void sort_3(t_input *input, t_stack *a)
 void	sort_4_to_9(t_input *input, t_stack *a, t_stack *b)
 {
 	t_node	*smallest;
-	
+
 	while (a->size > 3)
 		pb(input, a, b);
 	sort_3(input, a);

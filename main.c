@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 17:19:58 by thours            #+#    #+#             */
-/*   Updated: 2026/05/07 14:51:51 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/08 10:56:19 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ int	main(int argc, char **argv)
 
 static void handle_input(t_input *input)
 {
-	if (get_list_size(input->list) <= 9)
+	if (get_list_size(input->list) <= 9
+		&& (input->mod == ADAPTATIVE || input->mod == NONE))
 	{
 		handle_small_list(input);
 		if (input->bench_mod)
