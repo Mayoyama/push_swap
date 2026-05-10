@@ -1,7 +1,7 @@
 CC = cc
 # RETIRER  FSANITIZE FLAG
 CFLAGS = -Wall -Werror -Wextra -fsanitize=address
-SRCS = 	main.c \
+SRCS =	main.c \
 		algo_helpers/stack_struct_functions.c \
 		algo_helpers/get_above_med.c \
 		algo_helpers/cost_calculation.c \
@@ -27,7 +27,8 @@ SRCS = 	main.c \
 		push_operations/op_reverse_rotate.c \
 		push_operations/op_rotate.c \
 		push_operations/op_swap.c
-SRCS_BONUS =	bonus_checker/main_checker.c
+SRCS_BONUS =	bonus_checker/main_checker.c \
+				
 LIBFT = libft/libft.a
 OBJS = $(SRCS:.c=.o)
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
@@ -62,7 +63,7 @@ valgrind: $(NAME)
 
 bonus: $(NAME_BONUS)
 
-$(NAME_BONUS): $(LIBFT) $(OBJS_BONUS)
+$(NAME_BONUS): $(LIBFT) $(OBJS) $(OBJS_BONUS)
 	$(MAKE) all
 	$(CC) $(CFLAGS) -o $@ $^ -Llibft -lft
 
