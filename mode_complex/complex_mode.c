@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 17:10:24 by speterse          #+#    #+#             */
-/*   Updated: 2026/05/07 10:46:49 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/11 11:47:22 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	do_complex_algo(t_input *input)
 			free(stack_a);
 		if (stack_b)
 			free(stack_b);
+		free_input(input);
 		return ;
 	}
 	if (!is_sorted(stack_a))

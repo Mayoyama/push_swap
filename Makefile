@@ -28,7 +28,23 @@ SRCS =	main.c \
 		push_operations/op_rotate.c \
 		push_operations/op_swap.c
 SRCS_BONUS =	bonus_checker/main_checker.c \
-				
+				bonus_checker/check_op_push.c \
+				bonus_checker/check_op_reverse_rotate.c \
+				bonus_checker/check_op_rotate.c \
+				bonus_checker/check_op_swap.c \
+				input_parser/check_input.c \
+				input_parser/extract_input.c \
+				input_parser/input_struct_functions.c \
+				input_parser/num_struct_functions.c \
+				input_parser/parser_utils.c \
+				algo_helpers/stack_struct_functions.c \
+				algo_helpers/utils.c \
+				push_operations/op_push.c \
+				push_operations/op_reverse_rotate.c \
+				push_operations/op_rotate.c \
+				push_operations/op_swap.c \
+				mode_adaptive/disorder_checker.c
+
 LIBFT = libft/libft.a
 OBJS = $(SRCS:.c=.o)
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
@@ -63,7 +79,7 @@ valgrind: $(NAME)
 
 bonus: $(NAME_BONUS)
 
-$(NAME_BONUS): $(LIBFT) $(OBJS) $(OBJS_BONUS)
+$(NAME_BONUS): $(LIBFT) $(OBJS_BONUS)
 	$(MAKE) all
 	$(CC) $(CFLAGS) -o $@ $^ -Llibft -lft
 

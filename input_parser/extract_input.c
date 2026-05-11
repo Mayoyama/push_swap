@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 10:31:17 by thours            #+#    #+#             */
-/*   Updated: 2026/05/07 10:33:56 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/11 11:44:52 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ t_input	*extract_user_input(char **argv)
 		i++;
 	}
 	if (!input->list)
-		return (free(input), NULL);
+		return (free_input(input), NULL);
 	input->size = get_list_size(input->list);
 	if (check_for_duplicate(input->list) == 1)
-		return (free(input), NULL);
+		return (free_input(input), NULL);
 	input->disorder = compute_disorder(input->list);
 	get_index(input->list);
 	return (input);

@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 11:04:46 by thours            #+#    #+#             */
-/*   Updated: 2026/05/08 18:50:15 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/11 11:57:26 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 {
 	t_input	*input;
 
-	if (argc > 2)
+	if (argc > 1)
 	{
 		if (!check_input(argc, argv))
 		{
@@ -36,41 +36,24 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-static int	init_stacks(t_input *inp, t_stack *a, t_stack *b)
-{
-	a = create_stack_struct(inp);
-	b = create_stack_struct(NULL);
-	if (!a || !b)
-	{
-		write(2, "Error\n", 6);
-		if (a)
-			free(a);
-		if (b)
-			free(b);
-		free_input(inp);
-		return (0);
-	}
-	return (1);
-}
-
 void	start_checker(t_input *input)
 {
-	char	*line;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
-	stack_a = NULL;
-	stack_b = NULL;
-	if (!init_stacks(input, stack_a, stack_b))
-		return ;
-	while ((line = get_next_line(1)) != NULL)
+	stack_a = create_stack_struct(input);
+	stack_b = create_stack_struct(NULL);
+	if (!stack_a || !stack_b)
 	{
-		if (!handle_line(line, input, stack_a, stack_b))
-		{
-			write(2, "Error\n", 2);
-			return ;
-		}
+		write(2, "Error\n", 6);
+		if (stack_a)
+			free(stack_a);
+		if (stack_b)
+			free(stack_b);
+		free_input(input);
+		return ;
 	}
+	execute_operations(input, stack_a, stack_b);
 	if (algorithm_has_end(stack_a, stack_b))
 		write(1, "OK\n", 3);
 	else
@@ -79,30 +62,49 @@ void	start_checker(t_input *input)
 	free(stack_b);
 }
 
+void	execute_operations(t_input *inp, t_stack *a, t_stack *b)
+{
+	char	*line;
+
+	while (1)
+	{
+		line = get_next_line(0);
+		if (!line)
+			break ;
+		if (!handle_line(line, inp, a, b))
+		{
+			write(2, "Error\n", 6);
+			free(line);
+			return ;
+		}
+		free(line);
+	}
+}
+
 int	handle_line(char *line, t_input *inp, t_stack *a, t_stack *b)
 {
-	if (ft_strncmp(line, "sa\n", 5))
-		sa(inp, a);
-	else if (ft_strncmp(line, "sb\n", 4))
-		sb(inp, b);
-	else if (ft_strncmp(line, "ss\n", 4))
-		ss(inp, a, b);
-	else if (ft_strncmp(line, "pa\n", 4))
-		pa(inp, a, b);
-	else if (ft_strncmp(line, "pb\n", 4))
-		pb(inp, a, b);
-	else if (ft_strncmp(line, "ra\n", 4))
-		ra(inp, a);
-	else if (ft_strncmp(line, "rb\n", 4))
-		rb(inp, a);
-	else if (ft_strncmp(line, "rr\n", 4))
-		rr(inp, a, b);
-	else if (ft_strncmp(line, "rra\n", 5))
-		rra(inp, a);
-	else if (ft_strncmp(line, "rrb\n", 5))
-		rrb(inp, b);
-	else if (ft_strncmp(line, "rrr\n", 5))
-		rrr(inp, a, b);
+	if (ft_strncmp(line, "sa\n", 3) == 0)
+		checker_sa(inp, a);
+	else if (ft_strncmp(line, "sb\n", 3) == 0)
+		checker_sb(inp, b);
+	else if (ft_strncmp(line, "ss\n", 3) == 0)
+		checker_ss(inp, a, b);
+	else if (ft_strncmp(line, "pa\n", 3) == 0)
+		checker_pa(inp, a, b);
+	else if (ft_strncmp(line, "pb\n", 3) == 0)
+		checker_pb(inp, a, b);
+	else if (ft_strncmp(line, "ra\n", 3) == 0)
+		checker_ra(inp, a);
+	else if (ft_strncmp(line, "rb\n", 3) == 0)
+		checker_rb(inp, a);
+	else if (ft_strncmp(line, "rr\n", 3) == 0)
+		checker_rr(inp, a, b);
+	else if (ft_strncmp(line, "rra\n", 4) == 0)
+		checker_rra(inp, a);
+	else if (ft_strncmp(line, "rrb\n", 4) == 0)
+		checker_rrb(inp, b);
+	else if (ft_strncmp(line, "rrr\n", 4) == 0)
+		checker_rrr(inp, a, b);
 	else
 		return (0);
 	return (1);

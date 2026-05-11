@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 09:48:42 by thours            #+#    #+#             */
-/*   Updated: 2026/04/30 13:32:55 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/11 10:57:15 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ char	*clear_prev_line(char *stored)
 		i++;
 	if (stored[i] == '\n')
 		i++;
-	new_stored = malloc(ft_strlen(stored) - i + 1);
+	new_stored = malloc(ft_strlen_int(stored) - i + 1);
 	if (!new_stored)
 		return (free(stored), NULL);
 	j = 0;

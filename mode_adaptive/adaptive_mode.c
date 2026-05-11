@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   adaptive_mode.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: speterse <speterse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 18:13:23 by speterse          #+#    #+#             */
-/*   Updated: 2026/05/05 20:19:10 by speterse         ###   ########.fr       */
+/*   Updated: 2026/05/11 11:56:15 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	adaptive_modeset(t_input *input)
 {
 	input->disorder = compute_disorder(input->list);
-	ft_printf("\n");
 	if (input->disorder < 0.2)
 		do_simple_algo(input);
 	else if (input->disorder < 0.5)
