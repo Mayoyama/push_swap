@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 18:43:39 by speterse          #+#    #+#             */
-/*   Updated: 2026/05/11 11:28:59 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/12 10:37:18 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,4 @@ void	checker_pb(t_input *input, t_stack *a, t_stack *b)
 	push_to_dest(b, a);
 	input->op_counts->pb++;
 	input->op_counts->total_ops++;
-	
 }

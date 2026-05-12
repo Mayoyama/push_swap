@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/07 11:06:47 by thours            #+#    #+#             */
-/*   Updated: 2026/05/08 10:59:10 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/12 10:36:19 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	handle_small_list(t_input *input)
 	stack_b = create_stack_struct(NULL);
 	if (!stack_b)
 	{
-		write (2, "error\n", 6);;
+		write (2, "error\n", 6);
 		free_input(input);
 		free(stack_a);
 		return ;
@@ -53,11 +53,11 @@ static void	dispatch(t_input *input, t_stack *a, t_stack *b)
 		sort_4_to_9(input, a, b);
 }
 
-void sort_3(t_input *input, t_stack *a)
+void	sort_3(t_input *input, t_stack *a)
 {
-	int top;
-	int mid;
-	int bot;
+	int	top;
+	int	mid;
+	int	bot;
 
 	top = a->list->index;
 	mid = a->list->next->index;

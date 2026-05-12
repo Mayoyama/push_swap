@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 12:43:40 by thours            #+#    #+#             */
-/*   Updated: 2026/05/05 14:44:03 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/12 13:43:05 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	is_in_chunk(t_node *node, int start, int end)
  *	it can be intresting to do a rotate on B if an item, regarding it
  *	relative index, should rather be at the bottom of B.
  *	This optimisation does a 'rb' operation if an item should be in
- *	the low zone of the chunk, after each insertion fram A to B.
+ *	the low zone of the chunk, after each insertion from A to B.
  *	Optimisation phase has shown that this optimization works with big
  *	chunks, but lose it efficiency with small chunks, sometime showing even
  *	worst results with chunks under around 25 items.

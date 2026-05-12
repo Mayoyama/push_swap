@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: speterse <speterse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 18:43:39 by speterse          #+#    #+#             */
-/*   Updated: 2026/05/05 18:45:19 by speterse         ###   ########.fr       */
+/*   Updated: 2026/05/12 10:44:45 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,4 @@ void	pb(t_input *input, t_stack *a, t_stack *b)
 	input->op_counts->pb++;
 	input->op_counts->total_ops++;
 	write(1, "pb\n", 3);
-	
 }

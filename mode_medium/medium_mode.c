@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 04:38:10 by thours            #+#    #+#             */
-/*   Updated: 2026/05/07 11:08:18 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/12 10:43:31 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	do_medium_algo(t_input *input)
 	stack_b = create_stack_struct(NULL);
 	if (!stack_b)
 	{
-		write (2, "error\n", 6);;
+		write (2, "error\n", 6);
 		free_input(input);
 		free(stack_a);
 		return ;

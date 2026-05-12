@@ -16,7 +16,7 @@ argument (upper bounds) for time and space within the Push_swap model.
 ~~~
 
 
-*This project has been created as part of the 42 curriculum by thours[, speterse[...]].*
+*This project has been created as part of the 42 curriculum by thours[, speterse].*
 
 # push_swap
 
@@ -103,8 +103,8 @@ The following operations were made available to sort the stack:
 ### Sort Algorithms
 
 The following algorithms were implemented in this program:
-- Selection Sort Adaptation $O(n^2)$ 
-- CHUNK? $O(n\sqrt{n})$
+- Selection Sort Adaptation $O(n^2)$
+- Chunk sort adaptation $O(n\sqrt{n})$
 - LSD Radix Adaptation $O(n \log n)$
 
 
@@ -145,8 +145,8 @@ $> ./push_swap --simple 5 4 3 2 1
 ~~~
 
 Force the complex $O(n \log n)$ strategy and verify with the checker:
-~~~ 
-$> ARG="4 67 3 87 23"; ./push_swap --complex $ARG | ./checker_linux $ARG 
+~~~
+$> ARG="4 67 3 87 23"; ./push_swap --complex $ARG | ./checker_linux $ARG
 OK
 ~~~
 
@@ -196,13 +196,32 @@ This avoids always rotating in the same direction, halving the worst-case rotati
 
 This strategy is efficient for small inputs but degrades quickly as `n` grows — each extraction can require up to `n/2` rotations, and there are `n` extractions. For inputs above ~20 elements, the medium or complex strategy will always outperform it.
 
-1. a
-1. a
-1. a
+#### Medium Algorithm — Chunk Sort Adaptation $O(n\sqrt{n})$
 
-#### (Medium)
+The medium algorithm uses a **chunk-based greedy sort** operating in two phases.
 
-> text explaining which algorithm we chose and why
+##### Phase 1 — Distributing to Stack B
+
+All elements of A are pushed to B in **two chunks** of equal size, determined by their normalized index (rank in sorted order). Elements are pushed from the top or bottom of A (using `ra` or `rra`) to minimize rotations.
+
+
+##### Phase 2 — Reinserting into Stack A
+
+Each element of B is reinserted into A at its correct position using a **cost-based greedy strategy**:
+
+1. For each node in B, find its **target** in A — the smallest element in A strictly greater than the node (or the minimum of A if none exists).
+2. Compute the **push cost** — the total rotations needed to bring both the node and its target to the top of their respective stacks. Simultaneous rotations (`rr` / `rrr`) are used when both are on the same side.
+3. Select the **cheapest** node and execute the moves, then `pa`.
+
+Once B is empty, the minimum of A is rotated to the top with `ra` or `rra`.
+
+##### Complexity
+
+| Case | Operations (n = 500) |
+|---|---|
+| Average (~50% disorder) | ~4 400 - 4 800 |
+| Worst case | < 5 500 |
+
 
 #### LSD radix + Turk optimisation layer
 
@@ -215,7 +234,7 @@ However, I decided to use Mechanical Turk optimisations of a LSD Radix method, i
 The program evaluates the **disorder** of Stack A—a value between 0 and 1 representing how far the stack is from being sorted (0 being perfectly sorted, 1 being the worst possible order). When operating under the `--adaptive` flag, the following regimes are applied to stay within optimal operation counts:
 
 *   **Low Disorder (Disorder < 0.2):** Applies an **$O(n^2)$ sort method** (Selection Sort Adaptation). This regime is optimized for nearly sorted stacks where simple swaps and rotations are more efficient than complex partitioning.
-*   **Medium Disorder (0.2 ≤ Disorder < 0.5):** Applies an **$O(n\sqrt{n})$ sort method** (NAME OF MID). This provides a balanced middle ground to handle moderate entropy without the full overhead of bitwise sorting.
+*   **Medium Disorder (0.2 ≤ Disorder < 0.5):** Applies an **$O(n\sqrt{n})$ sort method** (Chunk Sort Adaptation). This provides a balanced middle ground to handle moderate entropy without the full overhead of bitwise sorting.
 *   **High Disorder (Disorder ≥ 0.5):** Applies an **$O(n \log n)$ sort method** (Radix Sort). This ensures that even the most chaotic datasets are sorted within the strict operation limits of the push_swap model.
 
 [Back to top](#table-of-contents)
@@ -228,6 +247,7 @@ The program evaluates the **disorder** of Stack A—a value between 0 and 1 repr
 - https://www.youtube.com/watch?v=wRvipSG4Mmk&t=4s
 - https://www.geeksforgeeks.org/dsa/radix-sort/
 - https://www.geeksforgeeks.org/c/extract-bits-in-c/
+- https://satyadeepmaheshwari.medium.com/sorting-large-datasets-with-limited-memory-the-chunked-merge-sort-approach-318275275c81
 
 ### Use of AI
 
@@ -253,6 +273,8 @@ The following sections were contributed by *thours*.
 - Low disorder mode ($O(n^2)$)
 - Medium disorder mode ($O(n\sqrt{n})$)
 - Benchmark mode (debugging and final implementation)
+- Short list handler
+- Bonus part: Checker
 
 The following sections were contributed by *speterse*.
 
@@ -262,8 +284,9 @@ The following sections were contributed by *speterse*.
 - Benchmark mode (inital design)
 - ft_putdouble_fd
 - Push operations (pa, pb, ra, rb, etc)
-- High disorder ($O(n \log n)$) 
+- High disorder ($O(n \log n)$)
 
 We also collaborated together and held regular discussions relating to our progress and implementations of our relevant tasks. We decided upfront mostly which sections would be handled by whom, with each of us picking up additional tasks the project progressed.
+Git tools, like branches and merges, were used extensively in this project to facilitate collabortion and avoid any type of conflict.
 
 [Back to top](#table-of-contents)

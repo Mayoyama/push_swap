@@ -6,13 +6,13 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 17:19:58 by thours            #+#    #+#             */
-/*   Updated: 2026/05/08 10:56:19 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/12 10:40:40 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void handle_input(t_input *input);
+static void	handle_input(t_input *input);
 
 int	main(int argc, char **argv)
 {
@@ -38,7 +38,7 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-static void handle_input(t_input *input)
+static void	handle_input(t_input *input)
 {
 	if (get_list_size(input->list) <= 9
 		&& (input->mod == ADAPTATIVE || input->mod == NONE))
@@ -49,7 +49,7 @@ static void handle_input(t_input *input)
 		return ;
 	}
 	if (input->mod == SIMPLE)
-			do_simple_algo(input);
+		do_simple_algo(input);
 	else if (input->mod == MEDIUM)
 		do_medium_algo(input);
 	else if (input->mod == COMPLEX)

@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 15:58:26 by thours            #+#    #+#             */
-/*   Updated: 2026/05/07 13:34:04 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/12 10:41:20 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ typedef enum e_mod
 	ADAPTATIVE,
 }				t_mod;
 
-// Keeps track of push operation usage counts
 typedef struct s_opcount
 {
 	int	pa;
@@ -167,7 +166,7 @@ void		reset_cost_flags(t_node *list);
 
 void		handle_small_list(t_input *input);
 void		sort_3(t_input *input, t_stack *stack);
-void	sort_4_to_9(t_input *input, t_stack *a, t_stack *b);
+void		sort_4_to_9(t_input *input, t_stack *a, t_stack *b);
 
 /* ************************************************************************** */
 /* *********************		SIMPLE MODE		***************************** */

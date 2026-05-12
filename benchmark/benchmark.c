@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   benchmark.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/12 10:41:36 by thours            #+#    #+#             */
+/*   Updated: 2026/05/12 10:45:22 by thours           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 #include "../libft.h"
 
-static void bench_lineone_opcounts(t_input *input)
+static void	bench_lineone_opcounts(t_input *input)
 {
 	ft_putstr_fd("sa:  ", 2);
 	padded_putnbr_fd(input->op_counts->sa, 2);
@@ -15,7 +27,7 @@ static void bench_lineone_opcounts(t_input *input)
 	padded_putnbr_fd(input->op_counts->pb, 2);
 }
 
-static void bench_linetwo_opcounts(t_input *input)
+static void	bench_linetwo_opcounts(t_input *input)
 {
 	ft_putstr_fd("ra:  ", 2);
 	padded_putnbr_fd(input->op_counts->ra, 2);
@@ -41,7 +53,7 @@ static void	bench_print_strategy(t_input *input)
 			ft_putstr_fd("Adaptive / O(n√n)\n", 2);
 		else
 			ft_putstr_fd("Adaptive / O(n log n)\n", 2);
-	}	
+	}
 	else if (input->mod == SIMPLE)
 		ft_putstr_fd("Simple / O(n2)\n", 2);
 	else if (input->mod == MEDIUM)
@@ -52,18 +64,14 @@ static void	bench_print_strategy(t_input *input)
 
 void	benchmark_mode(t_input *input)
 {
-	//Disorder
 	ft_putstr_fd("[bench] disorder:    ", 2);
 	ft_putdouble_fd(input->disorder * 100, 2, 2);
 	ft_putstr_fd("%\n", 2);
-	//Strategy
 	ft_putstr_fd("[bench] strategy:    ", 2);
 	bench_print_strategy(input);
-	//The total number of operations.
 	ft_putstr_fd("[bench] total_ops:   ", 2);
 	ft_putnbr_fd(input->op_counts->total_ops, 2);
 	ft_putstr_fd("\n", 2);
-	// The count of each operation type(sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr)
 	ft_putstr_fd("[bench] ", 2);
 	bench_lineone_opcounts(input);
 	ft_putstr_fd("\n", 2);
@@ -71,4 +79,3 @@ void	benchmark_mode(t_input *input)
 	bench_linetwo_opcounts(input);
 	ft_putstr_fd("\n", 2);
 }
-
