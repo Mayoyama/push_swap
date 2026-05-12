@@ -4,7 +4,7 @@ SRCS =	main.c \
 		algo_helpers/stack_struct_functions.c \
 		algo_helpers/get_above_med.c \
 		algo_helpers/cost_calculation.c \
-		algo_helpers/utils.c \
+		algo_helpers/algo_utils.c \
 		algo_helpers/ft_putdouble_fd.c \
 		benchmark/benchmark.c \
 		input_parser/check_input.c \
@@ -17,7 +17,7 @@ SRCS =	main.c \
 		mode_complex/complex_mode.c \
 		mode_complex/complex_mode_helpers.c \
 		mode_medium/medium_mode.c \
-		mode_medium/utils.c \
+		mode_medium/chunk_utils.c \
 		mode_medium/handle_chunks.c \
 		mode_medium/chunk_reinsertion.c \
 		mode_simple/simple_mode.c \
@@ -37,7 +37,7 @@ SRCS_BONUS =	bonus_checker/main_checker.c \
 				input_parser/num_struct_functions.c \
 				input_parser/parser_utils.c \
 				algo_helpers/stack_struct_functions.c \
-				algo_helpers/utils.c \
+				algo_helpers/algo_utils.c \
 				push_operations/op_push.c \
 				push_operations/op_reverse_rotate.c \
 				push_operations/op_rotate.c \
@@ -73,9 +73,6 @@ fclean: clean
 
 re: fclean all
 
-valgrind: $(NAME)
-	valgrind ./$(NAME)
-
 bonus: $(NAME_BONUS)
 
 $(NAME_BONUS): $(LIBFT) $(OBJS_BONUS)
@@ -85,4 +82,4 @@ $(NAME_BONUS): $(LIBFT) $(OBJS_BONUS)
 $(OBJS_BONUS): %.o:%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-.PHONY: all clean fclean re valgrind
+.PHONY: all clean fclean bonus re

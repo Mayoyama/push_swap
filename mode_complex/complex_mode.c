@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   complex_mode.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
+/*   By: speterse <speterse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 17:10:24 by speterse          #+#    #+#             */
-/*   Updated: 2026/05/11 11:47:22 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/12 18:08:24 by speterse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ void	do_complex_algo(t_input *input)
 	free(stack_b);
 }
 
-//input → stack A → (radix distribution) → stack B → 
-// (Turk reconstruction) → sorted A
 void	radix(t_input *input, t_stack *a, t_stack *b)
 {
 	int	bit;

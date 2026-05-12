@@ -1,10 +1,7 @@
 TO BE COMPLETED: NB: Links are broken, sorry!
-- [# Other?](other?) needed?
-- Line 94: Update medium mode name
-- [Simple Algorithm — Selection Sort Adaptation O(n²)](simple-algorithm---selection-sort-adaptation-$o(n^2)$) - Proofreading and update limitations
+- [Simple Algorithm — Selection Sort Adaptation O(n²)](simple-algorithm---selection-sort-adaptation-$o(n^2)$) - Proofreading
 - [# (Medium)]((medium)) - Update with your medium algorithm information
 - [RADIX STUFF](LSD-radix)
-- [# Considerations: Regarding the Disorder Metric](considerations:-regarding-the-disorder-metric) Update medium name
 - [# Documentation & References](documentation-&-References): update
 - Final formatting check to ensure consistency
 - Consider adding a few subsections to the TOC for longer sections
@@ -92,10 +89,6 @@ The following operations were made available to sort the stack:
 | **rrb** (reverse rotate b) | Shift down all elements of stack b by one. The last element becomes the first one. |
 | **rrr** | rra and rrb at the same time. |
 
-
-
-### Other?
-
 [Back to top](#table-of-contents)
 
 ## Features
@@ -103,6 +96,7 @@ The following operations were made available to sort the stack:
 ### Sort Algorithms
 
 The following algorithms were implemented in this program:
+- Adaptive mode sort algorithm for stacks less than 10 elements
 - Selection Sort Adaptation $O(n^2)$
 - Chunk sort adaptation $O(n\sqrt{n})$
 - LSD Radix Adaptation $O(n \log n)$
@@ -170,7 +164,7 @@ Error
 
 ### Decisions Behind Sorting Algorithms Choices
 
-Decisions were based on the following targets:
+Decisions were based on the following targets whereever feasible:
 
 1. For 100 random numbers, your program should use:
 	- Less than 2000 operations to pass (minimum requirement)
@@ -219,19 +213,35 @@ Once B is empty, the minimum of A is rotated to the top with `ra` or `rra`.
 
 | Case | Operations (n = 500) |
 |---|---|
-| Average (~50% disorder) | ~4 400 - 4 800 |
+| Average (~50% disorder) | ~4400 - 4800 |
 | Worst case | < 5 500 |
 
 
-#### LSD radix + Turk optimisation layer
+#### LSD Radix
 
-At first, a Mechanical Turk style sorting algorithm was considered, as it potentially can have quite good results according to the research. However, after evaluating it's complexity, it was found to not comply with the $O(n \log n)$ specification (at worst it is ($O(n^2)$).
+At first, a Mechanical Turk style sorting algorithm was considered, as it can have potentially quite good results according to the research. However, after evaluating it's complexity, it was found to not comply with the $O(n \log n)$ specification (at worst it is ($O(n^2)$). Therefore a decision was made to use a pure LSD based radix sorting algorithm.
 
-However, I decided to use Mechanical Turk optimisations of a LSD Radix method, in order to lower push_swap operations
+LSD Radix Sort is a non-comparative sorting algorithm that processes integers by individual digits or bits. In the context of push_swap, it is implemented using a binary (base-2) approach to efficiently partition elements between stack `a` and stack `b`. By evaluating the stack multiple times, once for each bit, it organises the numbers into a fully sorted sequence.
+
+##### How bitwise partitioning works
+Since push_swap only allows two stacks, the algorithm treats each number as a binary string. It iterates through each bit position (from the least significant to the most significant):
+
+- Bit is 0 -> The number is pushed to stack `b` (`pb`).
+- Bit is 1 -> The number remains in stack a and is rotated to the bottom (`ra`).
+
+After checking all elements for the current bit, everything in stack `b` is pushed back to stack a (`pa`), and the process moves to the next bit.
+
+##### Limitations
+While Radix Sort is highly consistent and "stable", its rigid nature means it does not take advantage of partially sorted data. It will *always* perform the same number of operations **regardless of the initial order and disorder**.
+
+1. Preprocessing required: Numbers must be "indexed" (simplified to a range of 0 to N-1) to handle negative values and large gaps between numbers. Radix by nature cannot process negative numbers, and must therefore rely on indexing instead.
+2. Fixed operation count: The number of passes is determined by the maximum number of bits $ (\log n)$, making it predictable but sometimes less efficient than optimized Quick Sort variants for certain distributions. The place that LSD radix really outperforms other sorting algorithms is with large data sets with high levels of disorder. For a list of 100 unique elements, the total op count will always be 1084 and for 500 elements, 6784. For testing purposes, LSD radix is able to sort 5000 elements in 100196 total ops.
+3. High instruction count: For small sets (like 5 or 100 elements), the overhead of bit-by-bit shifting often exceeds the cost of more direct "search and push" methods.
+
 
 ### Considerations: Regarding the Disorder Metric
 
-The program evaluates the **disorder** of Stack A—a value between 0 and 1 representing how far the stack is from being sorted (0 being perfectly sorted, 1 being the worst possible order). When operating under the `--adaptive` flag, the following regimes are applied to stay within optimal operation counts:
+The program evaluates the **disorder** of stack `a`: a value between 0 and 1 representing how far the stack is from being sorted (0 being perfectly sorted, 1 being the worst possible order). When operating under the `--adaptive` flag, the following regimes are applied to stay within optimal operation counts:
 
 *   **Low Disorder (Disorder < 0.2):** Applies an **$O(n^2)$ sort method** (Selection Sort Adaptation). This regime is optimized for nearly sorted stacks where simple swaps and rotations are more efficient than complex partitioning.
 *   **Medium Disorder (0.2 ≤ Disorder < 0.5):** Applies an **$O(n\sqrt{n})$ sort method** (Chunk Sort Adaptation). This provides a balanced middle ground to handle moderate entropy without the full overhead of bitwise sorting.

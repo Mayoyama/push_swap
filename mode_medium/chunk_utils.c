@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
+/*   By: speterse <speterse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 10:58:07 by thours            #+#    #+#             */
-/*   Updated: 2026/05/05 14:02:02 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/12 17:49:33 by speterse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,10 @@
  *	Here the calculation of the chunk size how th original chunk algorithm is
  *	done is still present (chunk_size = √n), but tests shown that size / 2 is
  *	the most efficient for data sorting around a few hundreds.
- *	√n should be more optimized for much larger data sests.
+ *	√n should be more optimized for much larger data sets.
 */
 int	get_chunk_size(t_stack *stack)
 {
-	int	i;
-
-	i = 0;
-	while ((i * i) < stack->size)
-		i++;
 	return (stack->size / 2);
 }
 
