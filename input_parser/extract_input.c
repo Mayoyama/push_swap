@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 10:31:17 by thours            #+#    #+#             */
-/*   Updated: 2026/05/11 11:44:52 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/12 16:35:23 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	get_parameter(t_input *input, char *str)
 		input->mod = MEDIUM;
 	if (ft_strncmp(str, "--complex", 12) == 0)
 		input->mod = COMPLEX;
-	if (ft_strncmp(str, "--adaptative", 12) == 0)
-		input->mod = ADAPTATIVE;
+	if (ft_strncmp(str, "--adaptive", 12) == 0)
+		input->mod = ADAPTIVE;
 	if (ft_strncmp(str, "--bench", 12) == 0)
 		input->bench_mod = 1;
 }

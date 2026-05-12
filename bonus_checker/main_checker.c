@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 11:04:46 by thours            #+#    #+#             */
-/*   Updated: 2026/05/11 11:57:26 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/12 16:56:26 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 
 	if (argc > 1)
 	{
-		if (!check_input(argc, argv))
+		if (!check_input(argv))
 		{
 			write(2, "Error\n", 6);
 			return (0);
@@ -96,7 +96,7 @@ int	handle_line(char *line, t_input *inp, t_stack *a, t_stack *b)
 	else if (ft_strncmp(line, "ra\n", 3) == 0)
 		checker_ra(inp, a);
 	else if (ft_strncmp(line, "rb\n", 3) == 0)
-		checker_rb(inp, a);
+		checker_rb(inp, b);
 	else if (ft_strncmp(line, "rr\n", 3) == 0)
 		checker_rr(inp, a, b);
 	else if (ft_strncmp(line, "rra\n", 4) == 0)

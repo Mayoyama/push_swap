@@ -6,30 +6,39 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 18:46:11 by thours            #+#    #+#             */
-/*   Updated: 2026/05/05 14:39:38 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/12 16:32:19 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	check_input(int argc, char **argv)
+int	check_input(char **argv)
 {
 	int	i;
+	int	flag;
+	int	bench;
 
-	if (argc > 1)
+	i = 1;
+	bench = 0;
+	flag = 0;
+	while (is_parameter(argv[i]))
 	{
-		i = 1;
-		while (argv[i])
-		{
-			if (ft_strlen_int(argv[i]) == 0)
-				return (0);
-			if (!is_parameter(argv[i]) && !is_valid_list(argv[i]))
-				return (0);
-			i++;
-		}
-		return (1);
+		if (ft_strncmp(argv[i], "--bench", 8) == 0)
+			bench++;
+		else
+			flag++;
+		i++;
 	}
-	return (0);
+	if (flag > 1 || bench > 1)
+		return (0);
+	while (argv[i])
+	{
+		if (ft_strlen_int(argv[i]) == 0 || !is_valid_list(argv[i])
+			|| is_parameter(argv[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 /*

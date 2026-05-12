@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 17:19:58 by thours            #+#    #+#             */
-/*   Updated: 2026/05/12 10:40:40 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/12 16:36:25 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 	input = NULL;
 	if (argc > 1)
 	{
-		if (!check_input(argc, argv))
+		if (!check_input(argv))
 		{
 			write(2, "Error\n", 6);
 			return (0);
@@ -41,7 +41,7 @@ int	main(int argc, char **argv)
 static void	handle_input(t_input *input)
 {
 	if (get_list_size(input->list) <= 9
-		&& (input->mod == ADAPTATIVE || input->mod == NONE))
+		&& (input->mod == ADAPTIVE || input->mod == NONE))
 	{
 		handle_small_list(input);
 		if (input->bench_mod)
@@ -54,7 +54,7 @@ static void	handle_input(t_input *input)
 		do_medium_algo(input);
 	else if (input->mod == COMPLEX)
 		do_complex_algo(input);
-	else if (input->mod == ADAPTATIVE || input->mod == NONE)
+	else if (input->mod == ADAPTIVE || input->mod == NONE)
 		adaptive_modeset(input);
 	if (input->bench_mod)
 		benchmark_mode(input);

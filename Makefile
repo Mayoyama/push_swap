@@ -1,6 +1,5 @@
 CC = cc
-# RETIRER  FSANITIZE FLAG
-CFLAGS = -Wall -Werror -Wextra -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra
 SRCS =	main.c \
 		algo_helpers/stack_struct_functions.c \
 		algo_helpers/get_above_med.c \

@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 10:41:36 by thours            #+#    #+#             */
-/*   Updated: 2026/05/12 10:45:22 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/12 16:36:55 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	bench_linetwo_opcounts(t_input *input)
 
 static void	bench_print_strategy(t_input *input)
 {
-	if (input->mod == ADAPTATIVE || input->mod == NONE)
+	if (input->mod == ADAPTIVE || input->mod == NONE)
 	{
 		if (input->disorder < 0.2)
 			ft_putstr_fd("Adaptive / O(n2)\n", 2);

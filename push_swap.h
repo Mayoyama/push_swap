@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 15:58:26 by thours            #+#    #+#             */
-/*   Updated: 2026/05/12 10:41:20 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/12 16:35:32 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef enum e_mod
 	SIMPLE,
 	MEDIUM,
 	COMPLEX,
-	ADAPTATIVE,
+	ADAPTIVE,
 }				t_mod;
 
 typedef struct s_opcount
@@ -78,7 +78,7 @@ typedef struct s_stack
 /* ************************************************************************** */
 
 /**** USER INPUT CHECKING ****/
-int			check_input(int argc, char **argv);
+int			check_input(char **argv);
 int			is_valid_list(char *str);
 long		ft_atoi_long(char *nptr, int *error);
 int			is_valid_int(char *str);
