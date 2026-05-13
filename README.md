@@ -251,7 +251,7 @@ Once `b` is empty, the minimum of `a` is rotated to the top with `ra` or `rra`.
 
 ### Complex Algorithm: Pure LSD Radix $O(n \log n)$
 
-At first, a Mechanical Turk style sorting algorithm was considered, as it can have potentially quite good results according to the research. However, after evaluating it's complexity, it was found to not comply with the $O(n \log n)$ specification (at worst it is ($O(n^2)$)). Therefore a decision was made to use a pure LSD based radix sorting algorithm.
+At first, a Mechanical Turk style sorting algorithm was considered, as it can have potentially quite good results according to the research. However, after evaluating it's complexity, it was found to not comply with the $O(n \log n)$ specification (at worst it is ($O(n^2)$)). Other sorting algorithms in the same $O(n \log n)$ class were also trialed, such as fenwick BIT trees, quicksort and heap sort, however initial results were found to be lacking, requiring many thousands more of operations to sort the stack. Therefore a decision was made to use a pure LSD based radix sorting algorithm.
 
 LSD Radix Sort is a non-comparative sorting algorithm that processes integers by individual digits or bits. In the context of push_swap, it is implemented using a binary (base-2) approach to efficiently partition elements between stack `a` and stack `b`. By evaluating the stack multiple times, once for each bit, it organises the numbers into a fully sorted sequence.
 
