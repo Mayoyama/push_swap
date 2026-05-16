@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 21:37:33 by thours            #+#    #+#             */
-/*   Updated: 2026/05/12 10:43:55 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/16 11:33:26 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ void	run_simple_algo(t_input *input, t_stack *a, t_stack *b)
 {
 	t_node	*smallest;
 
+	if (algorithm_has_end(a, b))
+		return ;
 	while (a->size > 1)
 	{
 		get_above_med(a, b);

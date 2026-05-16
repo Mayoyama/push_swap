@@ -6,7 +6,7 @@
 /*   By: thours <thours@student.42belgium.be>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 04:38:10 by thours            #+#    #+#             */
-/*   Updated: 2026/05/12 10:43:31 by thours           ###   ########.fr       */
+/*   Updated: 2026/05/16 11:34:53 by thours           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,11 @@ void	do_medium_algo(t_input *input)
 
 void	run_medium_algo(t_input *input, t_stack *a)
 {
+	t_stack	*b;
+
+	b = a->twin_stack;
+	if (algorithm_has_end(a, b))
+		return ;
 	run_phase_one(input, a);
 	handle_chunk_reinsertion(a, a->twin_stack, input);
 	put_on_top_a(find_smallest_value(a->list), a, input);
